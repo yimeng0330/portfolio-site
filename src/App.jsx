@@ -21,7 +21,7 @@ const projects = [
     metrics:
       "20 MHz · 279,723 μm² · 68.8% utilization · clean setup/hold · 5528-cycle latency",
     description:
-      "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow targeting TSMC 180nm, with emphasis on timing closure, congestion resolution, CTS, routing, and signoff verification.",
+      "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow targeting TSMC 180nm, with emphasis on timing closure, congestion resolution, CTS, routing, and signoff verification. Planned post-silicon testing is scheduled for Oct. 2026 – Dec. 2026 using an FPGA-controlled test platform to stream image data into the chip and verify returned classification labels against Python/RTL golden results.",
     swcaos: {
       situation:
         "Implemented a quantized MNIST CNN accelerator targeting TSMC 180nm as part of a full RTL-to-GDS tape-out flow, using the design to evaluate practical backend challenges including timing closure, congestion, and power grid integrity.",
@@ -32,31 +32,44 @@ const projects = [
       action:
         "Developed SDC constraints including clock, I/O delay, and uncertainty; performed iterative STA across synthesis, post-CTS, and post-route stages; refined placement, routing, buffering, and cell sizing; tuned CTS for skew and insertion delay; and completed GLS, LVS/DRC/ERC, and PG connectivity checks.",
       outcome:
-        "Achieved clean setup/hold timing closure at 20 MHz. Final design metrics include 279,723 μm² area, 68.8% utilization, 5528-cycle latency, and 90.2% functional accuracy verified against Python reference outputs.",
+        "Achieved clean setup/hold timing closure at 20 MHz. Final design metrics include 279,723 μm² area, 68.8% utilization, 5528-cycle latency, and 90.2% functional accuracy verified against Python reference outputs. Post-silicon validation is planned for Oct. 2026 – Dec. 2026.",
       significance:
         "Built practical understanding of how floorplanning, routing congestion, CTS, timing constraints, and signoff verification interact in a complete backend physical design flow from RTL to tape-out readiness.",
+      testing:
+        "Planned silicon validation flow: an FPGA host controls reset, clock, and configuration, streams quantized MNIST image data into the chip through the narrow-I/O wrapper, captures the predicted label, and compares chip outputs with Python and RTL golden results. The setup can support both stored MNIST test vectors and external camera input after preprocessing, grayscale conversion, resizing, and quantization.",
     },
   },
   {
     title: "Traffic Light Controller ASIC Implementation",
-    type: "FSM Control Logic · RTL-to-GDS · Backend Optimization",
-    period: "2024",
-    tags: ["Verilog", "FSM", "SDC", "Design Compiler", "Innovus", "Floorplan", "CTS", "QRC", "DRC/LVS"],
+    type: "FSM Control Logic · RTL-to-GDS · SMIC 180nm",
+    period: "Sep. 2024 – Dec. 2024",
+    tags: [
+      "Verilog",
+      "FSM",
+      "SMIC 180nm",
+      "SDC",
+      "Design Compiler",
+      "Innovus",
+      "Floorplan",
+      "CTS",
+      "QRC",
+      "DRC/LVS",
+    ],
     metrics:
-      "100 MHz · slack = 7.81 ns · utilization reduced 88% → 47% · clean DRC/LVS",
+      "100 MHz · positive timing slack · utilization reduced 88% → 47% · clean DRC/LVS",
     description:
-      "Implemented an FSM-based traffic light controller and completed synthesis, STA, floorplanning, placement, CTS, routing, parasitic extraction, and physical verification, with emphasis on floorplan tuning, density reduction, and backend debug.",
+      "Implemented an FSM-based traffic light controller in SMIC 180nm and completed synthesis, STA, floorplanning, placement, CTS, routing, parasitic extraction, and physical verification, with emphasis on floorplan tuning, density reduction, and backend debug.",
     swcaos: {
       situation:
-        "Designed and implemented an FSM-based traffic light controller and completed full ASIC backend flow including synthesis, placement, routing, and physical verification under realistic timing constraints.",
+        "Designed and implemented an FSM-based traffic light controller in SMIC 180nm and completed full ASIC backend flow including synthesis, placement, routing, and physical verification under realistic timing constraints.",
       what:
-        "Developed RTL and testbench for traffic control logic, created SDC constraints for 100 MHz clock, I/O delay, fanout, load, and transition, and executed synthesis, STA, Innovus physical implementation, QRC extraction, and DRC/LVS verification.",
+        "Developed RTL and testbench for traffic control logic, created SDC constraints for a 100 MHz clock, I/O delay, fanout, load, and transition, and executed synthesis, STA, Innovus physical implementation, QRC extraction, and DRC/LVS verification.",
       challenge:
         "The initial floorplan produced ~88% utilization, creating severe congestion and unrealistic layout density. Pin Guide, Endcap, and WellTap insertion were also difficult due to mismatch between design size, row structure, and default tool settings.",
       action:
         "Manually optimized pin placement, adjusted floorplan dimensions beyond the default auto-generated size, customized WellTap insertion with row spacing of 20 and offset of 15, tuned power stripe and WellTap placement, and iteratively refined placement/routing to improve routability and power grid quality.",
       outcome:
-        "Reduced chip utilization from 88% to ~47%, significantly improving routability and layout feasibility. Achieved clean timing closure with slack = 7.81 ns, completed route and parasitic extraction, and passed DRC/LVS verification.",
+        "Reduced chip utilization from 88% to ~47%, significantly improving routability and layout feasibility. Achieved positive timing slack at 100 MHz, completed route and parasitic extraction, and passed DRC/LVS verification.",
       significance:
         "Demonstrated practical backend debug ability beyond simply running the flow, especially in congestion analysis, floorplan tuning, WellTap/Endcap handling, power grid planning, and understanding how physical constraints affect timing and routing.",
     },
@@ -186,10 +199,7 @@ export default function App() {
           color: var(--ink);
         }
 
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
+        a { color: inherit; text-decoration: none; }
 
         .nav {
           position: sticky;
@@ -209,10 +219,7 @@ export default function App() {
           align-items: center;
         }
 
-        .brand {
-          font-weight: 800;
-          letter-spacing: -0.03em;
-        }
+        .brand { font-weight: 800; letter-spacing: -0.03em; }
 
         .links {
           display: flex;
@@ -221,9 +228,7 @@ export default function App() {
           font-size: 14px;
         }
 
-        .links a:hover {
-          color: var(--ink);
-        }
+        .links a:hover { color: var(--ink); }
 
         .container {
           max-width: 1120px;
@@ -249,9 +254,7 @@ export default function App() {
           box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
         }
 
-        .hero-card {
-          padding: 44px;
-        }
+        .hero-card { padding: 44px; }
 
         .pill {
           display: inline-flex;
@@ -330,9 +333,7 @@ export default function App() {
           border-bottom: 1px solid var(--line);
         }
 
-        .metric:last-child {
-          border-bottom: 0;
-        }
+        .metric:last-child { border-bottom: 0; }
 
         .metric strong {
           display: block;
@@ -345,9 +346,7 @@ export default function App() {
           font-size: 14px;
         }
 
-        .section {
-          padding: 46px 0;
-        }
+        .section { padding: 46px 0; }
 
         .eyebrow {
           margin: 0 0 8px;
@@ -479,9 +478,7 @@ export default function App() {
           gap: 18px;
         }
 
-        .mini-card {
-          padding: 24px;
-        }
+        .mini-card { padding: 24px; }
 
         .mini-card h3 {
           margin: 0 0 8px;
@@ -535,9 +532,7 @@ export default function App() {
           align-items: center;
         }
 
-        .contact h2 {
-          margin-bottom: 8px;
-        }
+        .contact h2 { margin-bottom: 8px; }
 
         .contact p {
           color: #d7dded;
@@ -560,9 +555,7 @@ export default function App() {
         }
 
         @media (max-width: 820px) {
-          .links {
-            display: none;
-          }
+          .links { display: none; }
 
           .hero,
           .two-col,
@@ -570,22 +563,16 @@ export default function App() {
             grid-template-columns: 1fr;
           }
 
-          .hero {
-            padding-top: 46px;
-          }
+          .hero { padding-top: 46px; }
 
-          .hero-card {
-            padding: 28px;
-          }
+          .hero-card { padding: 28px; }
 
           .project-top,
           .contact {
             flex-direction: column;
           }
 
-          .period {
-            white-space: normal;
-          }
+          .period { white-space: normal; }
         }
       `}</style>
 
