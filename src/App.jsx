@@ -1,76 +1,364 @@
 import React from "react";
 
+const profile = {
+  name: "Yvonne Sun",
+  subtitle: "M.S. ECE @ UCLA",
+  focus: "Analog/RF IC Design · Physical Design · ML Hardware Acceleration",
+  location: "Los Angeles, CA",
+  email: "your.email@ucla.edu",
+  linkedin: "linkedin.com/in/your-profile",
+  github: "github.com/your-github",
+  summary:
+    "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across analog/RF IC design, physical design, RTL implementation, and semiconductor device modeling. My work connects circuit-level design, digital implementation, and hardware acceleration for efficient integrated systems.",
+};
+
+const projects = [
+  {
+    title: "Quantized MNIST CNN Accelerator",
+    type: "Digital IC · RTL-to-GDS",
+    period: "Mar. 2026 – Jun. 2026",
+    tags: ["Verilog", "TSMC 180nm", "Synthesis", "PnR", "STA"],
+    description:
+      "Designed a fixed-point two-layer CNN accelerator with a narrow-I/O chip-top wrapper and single-clock architecture. Explored streaming line buffers, MAC reuse, serial FC accumulation, and area-oriented RTL microarchitecture tradeoffs.",
+  },
+  {
+    title: "Physical Design Flow and Timing Closure",
+    type: "Backend IC Design",
+    period: "2025",
+    tags: ["Innovus", "MMMC", "Routing", "Power Grid", "Timing"],
+    description:
+      "Implemented a physical design flow including floorplanning, placement, routing, RC extraction, and timing/power analysis. Investigated utilization, timing-driven placement, optimization stages, and WNS/TNS closure behavior.",
+  },
+  {
+    title: "Folded-Cascode Fully Differential Op Amp",
+    type: "Analog IC Design",
+    period: "2025",
+    tags: ["Virtuoso", "Spectre", "CMFB", "Settling", "Power"],
+    description:
+      "Designed a fully differential folded-cascode operational amplifier with NMOS input pair and common-mode feedback. Optimized versions for fast settling and low-power operation through schematic-level simulations.",
+  },
+  {
+    title: "24 GHz LC VCO Design",
+    type: "RF IC Design",
+    period: "2024",
+    tags: ["LC VCO", "RF", "Phase Noise", "Cadence", "Layout"],
+    description:
+      "Designed and analyzed a high-frequency LC voltage-controlled oscillator, covering oscillation condition, frequency tuning, phase noise, power consumption, and RF layout-sensitive tradeoffs.",
+  },
+];
+
+const research = [
+  {
+    title: "High-Speed Mixed-Signal IC Research",
+    org: "UCLA · Frank Chang Lab",
+    description:
+      "Research assistant work in high-speed mixed-signal and RF integrated circuits, including simulation, circuit analysis, and technical documentation.",
+  },
+  {
+    title: "GAAFET / Nanosheet Device Modeling",
+    org: "Undergraduate Research",
+    description:
+      "TCAD-based modeling and analysis of advanced transistor structures, strengthening foundation in semiconductor physics and process-device interaction.",
+  },
+];
+
+const experience = [
+  ["Research Assistant", "UCLA High-Speed Mixed-Signal Lab", "High-speed mixed-signal IC design research."],
+  ["Intern", "NXP Semiconductors", "Semiconductor engineering internship experience."],
+  ["Reader", "UCLA ECE 149", "Supported grading, exam logistics, and course instruction."],
+];
+
+const skills = [
+  "Cadence Virtuoso",
+  "Spectre",
+  "Innovus",
+  "Genus",
+  "Synopsys DC",
+  "Verilog",
+  "Python",
+  "Tcl",
+  "Static Timing Analysis",
+  "RTL-to-GDS",
+  "Analog IC",
+  "RF IC",
+  "TCAD",
+  "FinFET / GAAFET",
+];
+
+function Tag({ children }) {
+  return <span className="tag">{children}</span>;
+}
+
+function Section({ id, eyebrow, title, children }) {
+  return (
+    <section id={id} className="section">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}
+
 export default function App() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "40px", maxWidth: "900px", margin: "0 auto" }}>
-      
-      {/* Header */}
-      <h1 style={{ fontSize: "36px", marginBottom: "10px" }}>
-        Yvonne Sun
-      </h1>
-      <p style={{ fontSize: "18px", color: "#555" }}>
-        M.S. ECE @ UCLA · Analog/RF IC · Physical Design · ML Hardware
-      </p>
+    <>
+      <style>{`
+        :root {
+          --bg: #f6f7fb;
+          --card: #ffffff;
+          --ink: #101522;
+          --muted: #647084;
+          --line: #e5e8ef;
+          --accent: #2457ff;
+          --accent2: #0f172a;
+        }
 
-      {/* About */}
-      <section style={{ marginTop: "40px" }}>
-        <h2>About Me</h2>
-        <p>
-          I am a graduate student in Electrical and Computer Engineering at UCLA, 
-          with interests in analog/RF IC design, physical design, and hardware acceleration.
-        </p>
-      </section>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+          margin: 0;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          background: radial-gradient(circle at top left, #e8edff 0, transparent 34%), var(--bg);
+          color: var(--ink);
+        }
+        a { color: inherit; text-decoration: none; }
 
-      {/* Projects */}
-      <section style={{ marginTop: "40px" }}>
-        <h2>Projects</h2>
+        .nav {
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          backdrop-filter: blur(18px);
+          background: rgba(246, 247, 251, 0.78);
+          border-bottom: 1px solid var(--line);
+        }
+        .nav-inner {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 16px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .brand { font-weight: 800; letter-spacing: -0.03em; }
+        .links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+        .links a:hover { color: var(--ink); }
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Quantized MNIST CNN Accelerator</h3>
-          <p>
-            Designed a fixed-point CNN accelerator in Verilog, including RTL design, 
-            synthesis, and place-and-route.
-          </p>
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+          padding: 86px 0 54px;
+          display: grid;
+          grid-template-columns: 1.25fr 0.75fr;
+          gap: 32px;
+          align-items: stretch;
+        }
+        .hero-card, .side-card, .project, .mini-card {
+          background: rgba(255,255,255,0.86);
+          border: 1px solid var(--line);
+          border-radius: 28px;
+          box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
+        }
+        .hero-card { padding: 44px; }
+        .pill {
+          display: inline-flex;
+          padding: 8px 13px;
+          border: 1px solid #d9def0;
+          border-radius: 999px;
+          color: #38507a;
+          background: #fff;
+          font-size: 13px;
+          font-weight: 650;
+          margin-bottom: 22px;
+        }
+        h1 {
+          margin: 0;
+          font-size: clamp(46px, 8vw, 82px);
+          line-height: 0.95;
+          letter-spacing: -0.075em;
+        }
+        .subtitle { margin: 18px 0 0; font-size: 22px; color: var(--accent2); font-weight: 700; }
+        .focus { margin: 6px 0 0; color: var(--muted); font-size: 18px; }
+        .summary { margin: 26px 0 0; color: #455064; line-height: 1.75; max-width: 760px; }
+        .cta-row { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn {
+          padding: 12px 18px;
+          border-radius: 15px;
+          font-weight: 750;
+          font-size: 14px;
+          border: 1px solid var(--line);
+        }
+        .btn.primary { background: var(--ink); color: white; border-color: var(--ink); }
+        .btn.secondary { background: white; color: var(--ink); }
+
+        .side-card { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+        .metric { padding: 18px 0; border-bottom: 1px solid var(--line); }
+        .metric:last-child { border-bottom: 0; }
+        .metric strong { display: block; font-size: 28px; letter-spacing: -0.04em; }
+        .metric span { color: var(--muted); font-size: 14px; }
+
+        .section { padding: 46px 0; }
+        .eyebrow {
+          margin: 0 0 8px;
+          color: var(--accent);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+        h2 { margin: 0 0 22px; font-size: 34px; letter-spacing: -0.05em; }
+
+        .project-grid { display: grid; gap: 18px; }
+        .project { padding: 28px; transition: transform .2s ease, box-shadow .2s ease; }
+        .project:hover { transform: translateY(-3px); box-shadow: 0 26px 70px rgba(15, 23, 42, 0.11); }
+        .project-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+        .project h3 { margin: 0; font-size: 24px; letter-spacing: -0.035em; }
+        .project .type { margin-top: 6px; color: var(--accent); font-weight: 750; font-size: 14px; }
+        .period { color: var(--muted); font-size: 14px; white-space: nowrap; }
+        .project p { color: #465267; line-height: 1.7; margin: 18px 0 0; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+        .tag { background: #eef2ff; color: #2a49a5; border: 1px solid #dfe5ff; padding: 7px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .mini-card { padding: 24px; }
+        .mini-card h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -0.025em; }
+        .mini-card .org { color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+        .mini-card p { color: #4b5668; line-height: 1.65; margin: 0; }
+
+        .experience-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .skill-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill { padding: 10px 13px; border: 1px solid var(--line); background: white; border-radius: 999px; color: #273142; font-weight: 700; font-size: 13px; }
+
+        .contact {
+          margin: 48px 0 70px;
+          padding: 34px;
+          border-radius: 30px;
+          background: linear-gradient(135deg, #101522, #243b75);
+          color: white;
+          display: flex;
+          justify-content: space-between;
+          gap: 24px;
+          align-items: center;
+        }
+        .contact h2 { margin-bottom: 8px; }
+        .contact p { color: #d7dded; margin: 0; }
+        .contact-links { display: flex; flex-direction: column; gap: 10px; min-width: 230px; }
+        .contact-links a { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 15px; padding: 12px 14px; font-weight: 750; }
+
+        @media (max-width: 820px) {
+          .links { display: none; }
+          .hero, .two-col, .experience-list { grid-template-columns: 1fr; }
+          .hero { padding-top: 46px; }
+          .hero-card { padding: 28px; }
+          .project-top, .contact { flex-direction: column; }
+          .period { white-space: normal; }
+        }
+      `}</style>
+
+      <nav className="nav">
+        <div className="nav-inner">
+          <a className="brand" href="#top">Yvonne Sun</a>
+          <div className="links">
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </div>
         </div>
+      </nav>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Folded-Cascode Op Amp</h3>
-          <p>
-            Designed a fully differential folded-cascode operational amplifier with CMFB.
-          </p>
-        </div>
+      <main id="top" className="container">
+        <section className="hero">
+          <div className="hero-card">
+            <span className="pill">IC Design Portfolio · Open to Internship Opportunities</span>
+            <h1>{profile.name}</h1>
+            <p className="subtitle">{profile.subtitle}</p>
+            <p className="focus">{profile.focus}</p>
+            <p className="summary">{profile.summary}</p>
+            <div className="cta-row">
+              <a className="btn primary" href={`mailto:${profile.email}`}>Contact Me</a>
+              <a className="btn secondary" href="#projects">View Projects</a>
+            </div>
+          </div>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>24 GHz LC VCO</h3>
-          <p>
-            Designed and analyzed a high-frequency LC VCO including phase noise and tuning.
-          </p>
-        </div>
-      </section>
+          <aside className="side-card">
+            <div className="metric">
+              <strong>IC</strong>
+              <span>Analog/RF + Backend Physical Design Focus</span>
+            </div>
+            <div className="metric">
+              <strong>RTL → GDS</strong>
+              <span>Digital implementation and timing closure practice</span>
+            </div>
+            <div className="metric">
+              <strong>Device → Circuit</strong>
+              <span>TCAD, semiconductor physics, and circuit simulation background</span>
+            </div>
+          </aside>
+        </section>
 
-      {/* Experience */}
-      <section style={{ marginTop: "40px" }}>
-        <h2>Experience</h2>
+        <Section id="research" eyebrow="Research" title="Research Background">
+          <div className="two-col">
+            {research.map((item) => (
+              <div className="mini-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <div className="org">{item.org}</div>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Research Assistant · UCLA</h3>
-          <p>High-speed mixed-signal IC design research.</p>
-        </div>
+        <Section id="projects" eyebrow="Selected Work" title="Engineering Projects">
+          <div className="project-grid">
+            {projects.map((project) => (
+              <article className="project" key={project.title}>
+                <div className="project-top">
+                  <div>
+                    <h3>{project.title}</h3>
+                    <div className="type">{project.type}</div>
+                  </div>
+                  <div className="period">{project.period}</div>
+                </div>
+                <p>{project.description}</p>
+                <div className="tags">
+                  {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </Section>
 
-        <div style={{ marginTop: "20px" }}>
-          <h3>Intern · NXP</h3>
-          <p>Semiconductor engineering internship experience.</p>
-        </div>
-      </section>
+        <Section id="experience" eyebrow="Experience" title="Professional Experience">
+          <div className="experience-list">
+            {experience.map(([role, company, desc]) => (
+              <div className="mini-card" key={role + company}>
+                <h3>{role}</h3>
+                <div className="org">{company}</div>
+                <p>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
-      {/* Contact */}
-      <section style={{ marginTop: "40px" }}>
-        <h2>Contact</h2>
-        <p>Email: your.email@ucla.edu</p>
-        <p>LinkedIn: linkedin.com/in/your-profile</p>
-        <p>GitHub: github.com/your-github</p>
-      </section>
+        <Section id="skills" eyebrow="Skills" title="Technical Skills">
+          <div className="skill-cloud">
+            {skills.map((skill) => <span className="skill" key={skill}>{skill}</span>)}
+          </div>
+        </Section>
 
-    </div>
+        <section id="contact" className="contact">
+          <div>
+            <p className="eyebrow" style={{ color: "#aebcff" }}>Contact</p>
+            <h2>Let’s connect.</h2>
+            <p>{profile.location} · Open to IC design, physical design, and hardware engineering opportunities.</p>
+          </div>
+          <div className="contact-links">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={`https://${profile.linkedin}`}>{profile.linkedin}</a>
+            <a href={`https://${profile.github}`}>{profile.github}</a>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
