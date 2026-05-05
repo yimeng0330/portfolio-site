@@ -13,13 +13,28 @@ const profile = {
 };
 
 const projects = [
-  {
-    title: "Quantized MNIST CNN Accelerator",
-    type: "Digital IC · RTL-to-GDS",
+    {
+    title: "Tape-Out of Quantized MNIST CNN Accelerator",
+    type: "Digital IC · RTL-to-GDS · TSMC 180nm",
     period: "Mar. 2026 – Jun. 2026",
-    tags: ["Verilog", "TSMC 180nm", "Synthesis", "PnR", "STA"],
+    tags: ["Verilog", "TSMC 180nm", "SDC", "STA", "Innovus", "CTS", "PnR", "LVS/DRC"],
+    metrics: "20 MHz · 279,723 μm² · 68.8% utilization · clean setup/hold · 5528-cycle latency",
     description:
-      "Designed a fixed-point two-layer CNN accelerator with a narrow-I/O chip-top wrapper and single-clock architecture. Explored streaming line buffers, MAC reuse, serial FC accumulation, and area-oriented RTL microarchitecture tradeoffs.",
+      "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow targeting TSMC 180nm, with emphasis on timing closure, congestion resolution, CTS, routing, and signoff verification.",
+    swcaos: {
+      situation:
+        "Implemented a quantized MNIST CNN accelerator targeting TSMC 180nm as part of a full RTL-to-GDS tape-out flow, using the design to evaluate practical backend challenges including timing closure, congestion, and power grid integrity.",
+      what:
+        "Designed a fixed-point two-layer CNN accelerator in Verilog and drove the design through synthesis, floorplanning, placement, CTS, routing, and signoff verification.",
+      challenge:
+        "Faced backend challenges including tight timing margins at 20 MHz, routing congestion at ~70% utilization, clock skew versus insertion delay tradeoffs during CTS, and ensuring clean setup/hold closure across timing views.",
+      action:
+        "Developed SDC constraints including clock, I/O delay, and uncertainty; performed iterative STA across synthesis, post-CTS, and post-route stages; refined placement, routing, buffering, and cell sizing; tuned CTS for skew and insertion delay; and completed GLS, LVS/DRC/ERC, and PG connectivity checks.",
+      outcome:
+        "Achieved clean setup/hold timing closure at 20 MHz. Final design metrics include 279,723 μm² area, 68.8% utilization, 5528-cycle latency, and 90.2% functional accuracy verified against Python reference outputs.",
+      significance:
+        "Built practical understanding of how floorplanning, routing congestion, CTS, timing constraints, and signoff verification interact in a complete backend physical design flow from RTL to tape-out readiness."
+    }
   },
   {
     title: "Physical Design Flow and Timing Closure",
@@ -308,7 +323,7 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="projects" eyebrow="Selected Work" title="Engineering Projects">
+        <Section id="projects" eyebrow="Selected Work" title="Physical Design Projects">
           <div className="project-grid">
             {projects.map((project) => (
               <article className="project" key={project.title}>
