@@ -3,22 +3,23 @@ import React from "react";
 const profile = {
   name: "Yvonne Sun",
   subtitle: "M.S. ECE @ UCLA",
-  focus: "Analog/RF IC Design · Physical Design · ML Hardware Acceleration",
+  focus: "Physical Design · Analog/RF IC Design · ML Hardware Acceleration",
   location: "Los Angeles, CA",
   email: "your.email@ucla.edu",
   linkedin: "linkedin.com/in/your-profile",
   github: "github.com/your-github",
   summary:
-    "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across analog/RF IC design, physical design, RTL implementation, and semiconductor device modeling. My work connects circuit-level design, digital implementation, and hardware acceleration for efficient integrated systems.",
+    "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across RTL-to-GDS physical design, analog/RF IC design, RTL implementation, and semiconductor device modeling. My work connects digital implementation, circuit-level design, and hardware acceleration for efficient integrated systems.",
 };
 
 const projects = [
-    {
+  {
     title: "Tape-Out of Quantized MNIST CNN Accelerator",
     type: "Digital IC · RTL-to-GDS · TSMC 180nm",
     period: "Mar. 2026 – Jun. 2026",
     tags: ["Verilog", "TSMC 180nm", "SDC", "STA", "Innovus", "CTS", "PnR", "LVS/DRC"],
-    metrics: "20 MHz · 279,723 μm² · 68.8% utilization · clean setup/hold · 5528-cycle latency",
+    metrics:
+      "20 MHz · 279,723 μm² · 68.8% utilization · clean setup/hold · 5528-cycle latency",
     description:
       "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow targeting TSMC 180nm, with emphasis on timing closure, congestion resolution, CTS, routing, and signoff verification.",
     swcaos: {
@@ -33,8 +34,8 @@ const projects = [
       outcome:
         "Achieved clean setup/hold timing closure at 20 MHz. Final design metrics include 279,723 μm² area, 68.8% utilization, 5528-cycle latency, and 90.2% functional accuracy verified against Python reference outputs.",
       significance:
-        "Built practical understanding of how floorplanning, routing congestion, CTS, timing constraints, and signoff verification interact in a complete backend physical design flow from RTL to tape-out readiness."
-    }
+        "Built practical understanding of how floorplanning, routing congestion, CTS, timing constraints, and signoff verification interact in a complete backend physical design flow from RTL to tape-out readiness.",
+    },
   },
   {
     title: "Physical Design Flow and Timing Closure",
@@ -130,13 +131,18 @@ export default function App() {
 
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         body {
           margin: 0;
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           background: radial-gradient(circle at top left, #e8edff 0, transparent 34%), var(--bg);
           color: var(--ink);
         }
-        a { color: inherit; text-decoration: none; }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
 
         .nav {
           position: sticky;
@@ -146,6 +152,7 @@ export default function App() {
           background: rgba(246, 247, 251, 0.78);
           border-bottom: 1px solid var(--line);
         }
+
         .nav-inner {
           max-width: 1120px;
           margin: 0 auto;
@@ -154,11 +161,29 @@ export default function App() {
           justify-content: space-between;
           align-items: center;
         }
-        .brand { font-weight: 800; letter-spacing: -0.03em; }
-        .links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
-        .links a:hover { color: var(--ink); }
 
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .brand {
+          font-weight: 800;
+          letter-spacing: -0.03em;
+        }
+
+        .links {
+          display: flex;
+          gap: 22px;
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        .links a:hover {
+          color: var(--ink);
+        }
+
+        .container {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+
         .hero {
           padding: 86px 0 54px;
           display: grid;
@@ -166,13 +191,21 @@ export default function App() {
           gap: 32px;
           align-items: stretch;
         }
-        .hero-card, .side-card, .project, .mini-card {
-          background: rgba(255,255,255,0.86);
+
+        .hero-card,
+        .side-card,
+        .project,
+        .mini-card {
+          background: rgba(255, 255, 255, 0.86);
           border: 1px solid var(--line);
           border-radius: 28px;
           box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
         }
-        .hero-card { padding: 44px; }
+
+        .hero-card {
+          padding: 44px;
+        }
+
         .pill {
           display: inline-flex;
           padding: 8px 13px;
@@ -184,16 +217,41 @@ export default function App() {
           font-weight: 650;
           margin-bottom: 22px;
         }
+
         h1 {
           margin: 0;
           font-size: clamp(46px, 8vw, 82px);
           line-height: 0.95;
           letter-spacing: -0.075em;
         }
-        .subtitle { margin: 18px 0 0; font-size: 22px; color: var(--accent2); font-weight: 700; }
-        .focus { margin: 6px 0 0; color: var(--muted); font-size: 18px; }
-        .summary { margin: 26px 0 0; color: #455064; line-height: 1.75; max-width: 760px; }
-        .cta-row { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .subtitle {
+          margin: 18px 0 0;
+          font-size: 22px;
+          color: var(--accent2);
+          font-weight: 700;
+        }
+
+        .focus {
+          margin: 6px 0 0;
+          color: var(--muted);
+          font-size: 18px;
+        }
+
+        .summary {
+          margin: 26px 0 0;
+          color: #455064;
+          line-height: 1.75;
+          max-width: 760px;
+        }
+
+        .cta-row {
+          margin-top: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
         .btn {
           padding: 12px 18px;
           border-radius: 15px;
@@ -201,16 +259,49 @@ export default function App() {
           font-size: 14px;
           border: 1px solid var(--line);
         }
-        .btn.primary { background: var(--ink); color: white; border-color: var(--ink); }
-        .btn.secondary { background: white; color: var(--ink); }
 
-        .side-card { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
-        .metric { padding: 18px 0; border-bottom: 1px solid var(--line); }
-        .metric:last-child { border-bottom: 0; }
-        .metric strong { display: block; font-size: 28px; letter-spacing: -0.04em; }
-        .metric span { color: var(--muted); font-size: 14px; }
+        .btn.primary {
+          background: var(--ink);
+          color: white;
+          border-color: var(--ink);
+        }
 
-        .section { padding: 46px 0; }
+        .btn.secondary {
+          background: white;
+          color: var(--ink);
+        }
+
+        .side-card {
+          padding: 28px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .metric {
+          padding: 18px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .metric:last-child {
+          border-bottom: 0;
+        }
+
+        .metric strong {
+          display: block;
+          font-size: 28px;
+          letter-spacing: -0.04em;
+        }
+
+        .metric span {
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        .section {
+          padding: 46px 0;
+        }
+
         .eyebrow {
           margin: 0 0 8px;
           color: var(--accent);
@@ -219,28 +310,171 @@ export default function App() {
           letter-spacing: 0.18em;
           text-transform: uppercase;
         }
-        h2 { margin: 0 0 22px; font-size: 34px; letter-spacing: -0.05em; }
 
-        .project-grid { display: grid; gap: 18px; }
-        .project { padding: 28px; transition: transform .2s ease, box-shadow .2s ease; }
-        .project:hover { transform: translateY(-3px); box-shadow: 0 26px 70px rgba(15, 23, 42, 0.11); }
-        .project-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
-        .project h3 { margin: 0; font-size: 24px; letter-spacing: -0.035em; }
-        .project .type { margin-top: 6px; color: var(--accent); font-weight: 750; font-size: 14px; }
-        .period { color: var(--muted); font-size: 14px; white-space: nowrap; }
-        .project p { color: #465267; line-height: 1.7; margin: 18px 0 0; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-        .tag { background: #eef2ff; color: #2a49a5; border: 1px solid #dfe5ff; padding: 7px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+        h2 {
+          margin: 0 0 22px;
+          font-size: 34px;
+          letter-spacing: -0.05em;
+        }
 
-        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .mini-card { padding: 24px; }
-        .mini-card h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -0.025em; }
-        .mini-card .org { color: var(--accent); font-weight: 700; margin-bottom: 10px; }
-        .mini-card p { color: #4b5668; line-height: 1.65; margin: 0; }
+        .project-grid {
+          display: grid;
+          gap: 18px;
+        }
 
-        .experience-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-        .skill-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill { padding: 10px 13px; border: 1px solid var(--line); background: white; border-radius: 999px; color: #273142; font-weight: 700; font-size: 13px; }
+        .project {
+          padding: 28px;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 26px 70px rgba(15, 23, 42, 0.11);
+        }
+
+        .project-top {
+          display: flex;
+          justify-content: space-between;
+          gap: 18px;
+          align-items: flex-start;
+        }
+
+        .project h3 {
+          margin: 0;
+          font-size: 24px;
+          letter-spacing: -0.035em;
+        }
+
+        .project .type {
+          margin-top: 6px;
+          color: var(--accent);
+          font-weight: 750;
+          font-size: 14px;
+        }
+
+        .period {
+          color: var(--muted);
+          font-size: 14px;
+          white-space: nowrap;
+        }
+
+        .project p {
+          color: #465267;
+          line-height: 1.7;
+          margin: 18px 0 0;
+        }
+
+        .metrics {
+          margin-top: 18px;
+          padding: 13px 16px;
+          border-radius: 16px;
+          background: #f0f4ff;
+          border: 1px solid #dce6ff;
+          color: #2446a5;
+          font-size: 14px;
+          font-weight: 750;
+        }
+
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 18px;
+        }
+
+        .tag {
+          background: #eef2ff;
+          color: #2a49a5;
+          border: 1px solid #dfe5ff;
+          padding: 7px 10px;
+          border-radius: 999px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .swcaos {
+          margin-top: 20px;
+          border-top: 1px solid var(--line);
+          padding-top: 18px;
+        }
+
+        .swcaos summary {
+          cursor: pointer;
+          font-weight: 800;
+          color: var(--accent);
+          font-size: 15px;
+        }
+
+        .swcaos-item {
+          margin-top: 18px;
+          padding: 16px;
+          border-radius: 18px;
+          background: #f8faff;
+          border: 1px solid #e3e9f7;
+        }
+
+        .swcaos-item h4 {
+          margin: 0 0 8px;
+          font-size: 15px;
+          color: var(--ink);
+        }
+
+        .swcaos-item p {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.65;
+          color: #4b5668;
+        }
+
+        .two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .mini-card {
+          padding: 24px;
+        }
+
+        .mini-card h3 {
+          margin: 0 0 8px;
+          font-size: 19px;
+          letter-spacing: -0.025em;
+        }
+
+        .mini-card .org {
+          color: var(--accent);
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .mini-card p {
+          color: #4b5668;
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        .experience-list {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+
+        .skill-cloud {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .skill {
+          padding: 10px 13px;
+          border: 1px solid var(--line);
+          background: white;
+          border-radius: 999px;
+          color: #273142;
+          font-weight: 700;
+          font-size: 13px;
+        }
 
         .contact {
           margin: 48px 0 70px;
@@ -253,24 +487,66 @@ export default function App() {
           gap: 24px;
           align-items: center;
         }
-        .contact h2 { margin-bottom: 8px; }
-        .contact p { color: #d7dded; margin: 0; }
-        .contact-links { display: flex; flex-direction: column; gap: 10px; min-width: 230px; }
-        .contact-links a { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 15px; padding: 12px 14px; font-weight: 750; }
+
+        .contact h2 {
+          margin-bottom: 8px;
+        }
+
+        .contact p {
+          color: #d7dded;
+          margin: 0;
+        }
+
+        .contact-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          min-width: 230px;
+        }
+
+        .contact-links a {
+          background: rgba(255, 255, 255, 0.12);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 15px;
+          padding: 12px 14px;
+          font-weight: 750;
+        }
 
         @media (max-width: 820px) {
-          .links { display: none; }
-          .hero, .two-col, .experience-list { grid-template-columns: 1fr; }
-          .hero { padding-top: 46px; }
-          .hero-card { padding: 28px; }
-          .project-top, .contact { flex-direction: column; }
-          .period { white-space: normal; }
+          .links {
+            display: none;
+          }
+
+          .hero,
+          .two-col,
+          .experience-list {
+            grid-template-columns: 1fr;
+          }
+
+          .hero {
+            padding-top: 46px;
+          }
+
+          .hero-card {
+            padding: 28px;
+          }
+
+          .project-top,
+          .contact {
+            flex-direction: column;
+          }
+
+          .period {
+            white-space: normal;
+          }
         }
       `}</style>
 
       <nav className="nav">
         <div className="nav-inner">
-          <a className="brand" href="#top">Yvonne Sun</a>
+          <a className="brand" href="#top">
+            Yvonne Sun
+          </a>
           <div className="links">
             <a href="#research">Research</a>
             <a href="#projects">Projects</a>
@@ -284,29 +560,33 @@ export default function App() {
       <main id="top" className="container">
         <section className="hero">
           <div className="hero-card">
-            <span className="pill">IC Design Portfolio · Open to Internship Opportunities</span>
+            <span className="pill">IC Physical Design Portfolio · Open to Internship Opportunities</span>
             <h1>{profile.name}</h1>
             <p className="subtitle">{profile.subtitle}</p>
             <p className="focus">{profile.focus}</p>
             <p className="summary">{profile.summary}</p>
             <div className="cta-row">
-              <a className="btn primary" href={`mailto:${profile.email}`}>Contact Me</a>
-              <a className="btn secondary" href="#projects">View Projects</a>
+              <a className="btn primary" href={`mailto:${profile.email}`}>
+                Contact Me
+              </a>
+              <a className="btn secondary" href="#projects">
+                View Projects
+              </a>
             </div>
           </div>
 
           <aside className="side-card">
             <div className="metric">
-              <strong>IC</strong>
-              <span>Analog/RF + Backend Physical Design Focus</span>
-            </div>
-            <div className="metric">
               <strong>RTL → GDS</strong>
-              <span>Digital implementation and timing closure practice</span>
+              <span>Physical design flow, timing closure, routing, and signoff</span>
             </div>
             <div className="metric">
-              <strong>Device → Circuit</strong>
-              <span>TCAD, semiconductor physics, and circuit simulation background</span>
+              <strong>STA</strong>
+              <span>SDC constraints, setup/hold closure, and timing-path analysis</span>
+            </div>
+            <div className="metric">
+              <strong>IC</strong>
+              <span>Backend physical design with analog/RF and device background</span>
             </div>
           </aside>
         </section>
@@ -334,10 +614,29 @@ export default function App() {
                   </div>
                   <div className="period">{project.period}</div>
                 </div>
+
                 <p>{project.description}</p>
+
+                {project.metrics && <div className="metrics">{project.metrics}</div>}
+
                 <div className="tags">
-                  {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+                  {project.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
                 </div>
+
+                {project.swcaos && (
+                  <details className="swcaos">
+                    <summary>View SWCAOS Breakdown</summary>
+
+                    {Object.entries(project.swcaos).map(([key, value]) => (
+                      <div className="swcaos-item" key={key}>
+                        <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
+                        <p>{value}</p>
+                      </div>
+                    ))}
+                  </details>
+                )}
               </article>
             ))}
           </div>
@@ -357,15 +656,21 @@ export default function App() {
 
         <Section id="skills" eyebrow="Skills" title="Technical Skills">
           <div className="skill-cloud">
-            {skills.map((skill) => <span className="skill" key={skill}>{skill}</span>)}
+            {skills.map((skill) => (
+              <span className="skill" key={skill}>
+                {skill}
+              </span>
+            ))}
           </div>
         </Section>
 
         <section id="contact" className="contact">
           <div>
-            <p className="eyebrow" style={{ color: "#aebcff" }}>Contact</p>
+            <p className="eyebrow" style={{ color: "#aebcff" }}>
+              Contact
+            </p>
             <h2>Let’s connect.</h2>
-            <p>{profile.location} · Open to IC design, physical design, and hardware engineering opportunities.</p>
+            <p>{profile.location} · Open to physical design, IC design, and hardware engineering opportunities.</p>
           </div>
           <div className="contact-links">
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
