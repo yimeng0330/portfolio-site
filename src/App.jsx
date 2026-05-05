@@ -7,6 +7,7 @@ const profile = {
   location: "Los Angeles, CA",
   email: "yimeng0330@ucla.edu",
   phone: "+1 3109488751",
+  linkedin: "linkedin.com/in/your-profile",
   github: "github.com/your-github",
   summary:
     "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across RTL-to-GDS physical design, RTL implementation, semiconductor device modeling and analog/RF IC design. My work connects digital implementation, circuit-level design, and device-level understanding to enable efficient and robust integrated circuit systems.",
@@ -19,11 +20,11 @@ const projects = [
     period: "Mar. 2026 – Jun. 2026",
     weight: "★★★★☆",
     weightLabel: "Flagship Project",
-    tags: ["Verilog", "TSMC 180nm", "SDC", "STA", "Innovus", "CTS", "PnR"],
+    tags: ["Verilog", "TSMC 180nm", "SDC", "STA", "Innovus", "CTS", "PnR", "LVS/DRC"],
     metrics:
-      "20 MHz · 279,723 μm² · 68.8% utilization · clean timing · 5528-cycle latency",
+      "20 MHz · 279,723 μm² · 68.8% utilization · clean setup/hold · 5528-cycle latency",
     description:
-      "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow. Planned post-silicon testing (Oct.–Dec. 2026) uses an FPGA-controlled platform to stream quantized image data into the chip and verify predicted labels against Python/RTL golden results.",
+      "Designed and implemented a fixed-point two-layer CNN accelerator in Verilog and completed full RTL-to-GDS flow targeting TSMC 180nm, with emphasis on timing closure, congestion resolution, CTS, routing, and signoff verification. Planned post-silicon testing is scheduled for Oct. 2026 – Dec. 2026 using an FPGA-controlled test platform to stream image data into the chip and verify returned classification labels against Python/RTL golden results.",
     swcaos: {
       situation:
         "Implemented a quantized MNIST CNN accelerator targeting TSMC 180nm as part of a full RTL-to-GDS tape-out flow, using the design to evaluate practical backend challenges including timing closure, congestion, and power grid integrity.",
@@ -47,11 +48,22 @@ const projects = [
     period: "Sep. 2024 – Dec. 2024",
     weight: "★★★☆☆",
     weightLabel: "Backend Debug Project",
-    tags: ["Verilog", "FSM", "SMIC 180nm", "SDC", "Innovus", "Floorplan", "CTS"],
+    tags: [
+      "Verilog",
+      "FSM",
+      "SMIC 180nm",
+      "SDC",
+      "Design Compiler",
+      "Innovus",
+      "Floorplan",
+      "CTS",
+      "QRC",
+      "DRC/LVS",
+    ],
     metrics:
-      "100 MHz · positive slack · utilization 88% → 47% · clean DRC/LVS",
+      "100 MHz · positive timing slack · utilization reduced 88% → 47% · clean DRC/LVS",
     description:
-      "Implemented an FSM-based traffic light controller and completed full backend flow. Optimized floorplan, WellTap insertion, and pin placement to reduce congestion and improve routability.",
+      "Implemented an FSM-based traffic light controller in SMIC 180nm and completed synthesis, STA, floorplanning, placement, CTS, routing, parasitic extraction, and physical verification, with emphasis on floorplan tuning, density reduction, and backend debug.",
     swcaos: {
       situation:
         "Designed and implemented an FSM-based traffic light controller in SMIC 180nm and completed full ASIC backend flow including synthesis, placement, routing, and physical verification under realistic timing constraints.",
@@ -73,10 +85,11 @@ const projects = [
     period: "Sep. 2024 – Dec. 2024",
     weight: "★★☆☆☆",
     weightLabel: "Foundation Lab",
-    tags: ["Verilog", "Design Compiler", "STA", "Formal Verification"],
-    metrics: "positive timing slack · RTL–gate equivalence verified",
+    tags: ["Verilog", "Design Compiler", "Formal Verification", "STA"],
+    metrics:
+      "positive timing slack · 100% annotated timing coverage · RTL–gate equivalence verified",
     description:
-      "Completed ALU design including RTL implementation, synthesis, STA, and formal verification, building foundational backend understanding.",
+      "Completed an ALU design as part of a digital IC course lab, including RTL implementation, synthesis, timing analysis, and formal verification, serving as a foundation for backend physical design practice.",
     swcaos: {
       situation:
         "Completed an ALU design as part of a digital IC course lab, focusing on understanding RTL-to-synthesis flow and timing analysis fundamentals.",
@@ -87,50 +100,85 @@ const projects = [
       action:
         "Built SDC constraints, analyzed timing paths, iteratively optimized slack during synthesis, and used formal verification to validate RTL-to-gate equivalence.",
       outcome:
-        "Achieved positive timing slack and successful RTL–gate equivalence verification.",
+        "Achieved positive timing slack, full annotated timing coverage, and successful RTL–gate equivalence verification.",
       significance:
         "Built foundational understanding of digital backend flow, timing constraints, and verification, forming the basis for more advanced physical design projects.",
     },
   },
+  {
+    title: "Folded-Cascode Fully Differential Op Amp",
+    type: "Analog IC Design",
+    period: "2025",
+    tags: ["Virtuoso", "Spectre", "CMFB", "Settling", "Power"],
+    description:
+      "Designed a fully differential folded-cascode operational amplifier with NMOS input pair and common-mode feedback. Optimized versions for fast settling and low-power operation through schematic-level simulations.",
+  },
+  {
+    title: "24 GHz LC VCO Design",
+    type: "RF IC Design",
+    period: "2024",
+    tags: ["LC VCO", "RF", "Phase Noise", "Cadence", "Layout"],
+    description:
+      "Designed and analyzed a high-frequency LC voltage-controlled oscillator, covering oscillation condition, frequency tuning, phase noise, power consumption, and RF layout-sensitive tradeoffs.",
+  },
+];
+
+const research = [
+  {
+    title: "High-Speed Mixed-Signal IC Research",
+    org: "UCLA · Frank Chang Lab",
+    description:
+      "Research assistant work in high-speed mixed-signal and RF integrated circuits, including simulation, circuit analysis, and technical documentation.",
+  },
+  {
+    title: "GAAFET / Nanosheet Device Modeling",
+    org: "Undergraduate Research",
+    description:
+      "TCAD-based modeling and analysis of advanced transistor structures, strengthening foundation in semiconductor physics and process-device interaction.",
+  },
+];
+
+const experience = [
+  ["Research Assistant", "UCLA High-Speed Mixed-Signal Lab", "High-speed mixed-signal IC design research."],
+  ["Intern", "NXP Semiconductors", "Semiconductor engineering internship experience."],
+  ["Reader", "UCLA ECE 149", "Supported grading, exam logistics, and course instruction."],
+];
+
+const skills = [
+  "Cadence Virtuoso",
+  "Spectre",
+  "Innovus",
+  "Genus",
+  "Synopsys Design Compiler",
+  "Tempus",
+  "QRC",
+  "Verilog",
+  "Python",
+  "Tcl",
+  "Static Timing Analysis",
+  "SDC",
+  "RTL-to-GDS",
+  "Floorplanning",
+  "CTS",
+  "Routing",
+  "DRC/LVS",
+  "Analog IC",
+  "RF IC",
+  "TCAD",
+  "FinFET / GAAFET",
 ];
 
 function Tag({ children }) {
   return <span className="tag">{children}</span>;
 }
 
-function ProjectCard({ p }) {
+function Section({ id, eyebrow, title, children }) {
   return (
-    <div className="project">
-      <div className="project-top">
-        <div>
-          <h3>{p.title}</h3>
-          <div className="type">{p.type}</div>
-          <div className="weight">{p.weight} · {p.weightLabel}</div>
-        </div>
-        <div className="period">{p.period}</div>
-      </div>
-
-      <p>{p.description}</p>
-      <div className="metrics">{p.metrics}</div>
-
-      <div className="tags">
-        {p.tags.map((t) => (
-          <Tag key={t}>{t}</Tag>
-        ))}
-      </div>
-
-      {p.swcaos && (
-        <details className="swcaos">
-          <summary>View SWCAOS Breakdown</summary>
-          {Object.entries(p.swcaos).map(([key, value]) => (
-            <div className="swcaos-item" key={key}>
-              <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
-              <p>{value}</p>
-            </div>
-          ))}
-        </details>
-      )}
-    </div>
+    <section id={id} className="section">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {children}
+    </section>
   );
 }
 
@@ -140,11 +188,16 @@ export default function App() {
       <style>{`
         :root {
           --bg: #f6f7fb;
-          --line: #e5e8ef;
-          --accent: #2457ff;
+          --card: #ffffff;
           --ink: #101522;
           --muted: #647084;
+          --line: #e5e8ef;
+          --accent: #2457ff;
+          --accent2: #0f172a;
         }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
           margin: 0;
@@ -153,76 +206,183 @@ export default function App() {
           color: var(--ink);
         }
 
+        a { color: inherit; text-decoration: none; }
+
+        .nav {
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          backdrop-filter: blur(18px);
+          background: rgba(246, 247, 251, 0.78);
+          border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 16px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .brand { font-weight: 800; letter-spacing: -0.03em; }
+
+        .links {
+          display: flex;
+          gap: 22px;
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        .links a:hover { color: var(--ink); }
+
         .container {
-          max-width: 1100px;
-          margin: auto;
-          padding: 48px 24px 80px;
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 0 24px;
         }
 
         .hero {
-          padding: 42px;
-          border-radius: 28px;
-          background: rgba(255,255,255,0.88);
+          padding: 86px 0 54px;
+          display: grid;
+          grid-template-columns: 1.25fr 0.75fr;
+          gap: 32px;
+          align-items: stretch;
+        }
+
+        .hero-card,
+        .side-card,
+        .project,
+        .mini-card {
+          background: rgba(255, 255, 255, 0.86);
           border: 1px solid var(--line);
-          box-shadow: 0 20px 60px rgba(15,23,42,0.07);
+          border-radius: 28px;
+          box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
+        }
+
+        .hero-card { padding: 44px; }
+
+        .pill {
+          display: inline-flex;
+          padding: 8px 13px;
+          border: 1px solid #d9def0;
+          border-radius: 999px;
+          color: #38507a;
+          background: #fff;
+          font-size: 13px;
+          font-weight: 650;
+          margin-bottom: 22px;
         }
 
         h1 {
-          font-size: clamp(46px, 8vw, 78px);
+          margin: 0;
+          font-size: clamp(46px, 8vw, 82px);
           line-height: 0.95;
           letter-spacing: -0.075em;
-          margin: 0;
         }
 
         .subtitle {
-          margin-top: 18px;
+          margin: 18px 0 0;
           font-size: 22px;
-          color: #0f172a;
+          color: var(--accent2);
           font-weight: 700;
         }
 
         .focus {
-          margin-top: 8px;
+          margin: 6px 0 0;
           color: var(--muted);
           font-size: 18px;
         }
 
         .summary {
-          margin-top: 24px;
-          max-width: 780px;
+          margin: 26px 0 0;
           color: #455064;
           line-height: 1.75;
+          max-width: 760px;
         }
 
-        .contact-row {
-          margin-top: 22px;
+        .cta-row {
+          margin-top: 30px;
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
-          color: #455064;
-          font-weight: 650;
+        }
+
+        .btn {
+          padding: 12px 18px;
+          border-radius: 15px;
+          font-weight: 750;
+          font-size: 14px;
+          border: 1px solid var(--line);
+        }
+
+        .btn.primary {
+          background: var(--ink);
+          color: white;
+          border-color: var(--ink);
+        }
+
+        .btn.secondary {
+          background: white;
+          color: var(--ink);
+        }
+
+        .side-card {
+          padding: 28px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .metric {
+          padding: 18px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .metric:last-child { border-bottom: 0; }
+
+        .metric strong {
+          display: block;
+          font-size: 28px;
+          letter-spacing: -0.04em;
+        }
+
+        .metric span {
+          color: var(--muted);
           font-size: 14px;
         }
 
+        .section { padding: 46px 0; }
+
+        .eyebrow {
+          margin: 0 0 8px;
+          color: var(--accent);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+
         h2 {
-          margin: 42px 0 22px;
+          margin: 0 0 22px;
           font-size: 34px;
           letter-spacing: -0.05em;
         }
 
+        .project-grid {
+          display: grid;
+          gap: 18px;
+        }
+
         .project {
-          margin-top: 20px;
           padding: 28px;
-          border-radius: 24px;
-          background: rgba(255,255,255,0.9);
-          border: 1px solid var(--line);
-          box-shadow: 0 14px 45px rgba(15,23,42,0.06);
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .project:hover {
           transform: translateY(-3px);
-          box-shadow: 0 26px 70px rgba(15,23,42,0.11);
+          box-shadow: 0 26px 70px rgba(15, 23, 42, 0.11);
         }
 
         .project-top {
@@ -232,13 +392,13 @@ export default function App() {
           align-items: flex-start;
         }
 
-        h3 {
+        .project h3 {
           margin: 0;
           font-size: 24px;
           letter-spacing: -0.035em;
         }
 
-        .type {
+        .project .type {
           margin-top: 6px;
           color: var(--accent);
           font-weight: 750;
@@ -261,6 +421,14 @@ export default function App() {
           font-size: 13px;
           font-weight: 800;
           display: inline-flex;
+          gap: 8px;
+          align-items: center;
+        }
+
+        .weight small {
+          font-size: 12px;
+          color: #7a5a12;
+          font-weight: 750;
         }
 
         .project p {
@@ -311,7 +479,7 @@ export default function App() {
         }
 
         .swcaos-item {
-          margin-top: 16px;
+          margin-top: 18px;
           padding: 16px;
           border-radius: 18px;
           background: #f8faff;
@@ -331,33 +499,252 @@ export default function App() {
           color: #4b5668;
         }
 
+        .two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .mini-card { padding: 24px; }
+
+        .mini-card h3 {
+          margin: 0 0 8px;
+          font-size: 19px;
+          letter-spacing: -0.025em;
+        }
+
+        .mini-card .org {
+          color: var(--accent);
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .mini-card p {
+          color: #4b5668;
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        .experience-list {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+
+        .skill-cloud {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .skill {
+          padding: 10px 13px;
+          border: 1px solid var(--line);
+          background: white;
+          border-radius: 999px;
+          color: #273142;
+          font-weight: 700;
+          font-size: 13px;
+        }
+
+        .contact {
+          margin: 48px 0 70px;
+          padding: 34px;
+          border-radius: 30px;
+          background: linear-gradient(135deg, #101522, #243b75);
+          color: white;
+          display: flex;
+          justify-content: space-between;
+          gap: 24px;
+          align-items: center;
+        }
+
+        .contact h2 { margin-bottom: 8px; }
+
+        .contact p {
+          color: #d7dded;
+          margin: 0;
+        }
+
+        .contact-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          min-width: 230px;
+        }
+
+        .contact-links a {
+          background: rgba(255, 255, 255, 0.12);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 15px;
+          padding: 12px 14px;
+          font-weight: 750;
+        }
+
         @media (max-width: 820px) {
-          .container { padding: 28px 16px 60px; }
-          .hero { padding: 28px; }
-          .project-top { flex-direction: column; }
+          .links { display: none; }
+
+          .hero,
+          .two-col,
+          .experience-list {
+            grid-template-columns: 1fr;
+          }
+
+          .hero { padding-top: 46px; }
+
+          .hero-card { padding: 28px; }
+
+          .project-top,
+          .contact {
+            flex-direction: column;
+          }
+
           .period { white-space: normal; }
         }
       `}</style>
 
-      <main className="container">
-        <section className="hero">
-          <h1>{profile.name}</h1>
-          <div className="subtitle">{profile.subtitle}</div>
-          <div className="focus">{profile.focus}</div>
-          <div className="summary">{profile.summary}</div>
-          <div className="contact-row">
-            <span>{profile.location}</span>
-            <span>{profile.email}</span>
-            <span>{profile.phone}</span>
-            <span>{profile.github}</span>
+      <nav className="nav">
+        <div className="nav-inner">
+          <a className="brand" href="#top">
+            Yvonne Sun
+          </a>
+          <div className="links">
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
           </div>
+        </div>
+      </nav>
+
+      <main id="top" className="container">
+        <section className="hero">
+          <div className="hero-card">
+            <span className="pill">IC Physical Design Portfolio · Open to Internship Opportunities</span>
+            <h1>{profile.name}</h1>
+            <p className="subtitle">{profile.subtitle}</p>
+            <p className="focus">{profile.focus}</p>
+            <p className="summary">{profile.summary}</p>
+            <div className="cta-row">
+              <a className="btn primary" href={`mailto:${profile.email}`}>
+                Contact Me
+              </a>
+              <a className="btn secondary" href="#projects">
+                View Projects
+              </a>
+            </div>
+          </div>
+
+          <aside className="side-card">
+            <div className="metric">
+              <strong>RTL → GDS</strong>
+              <span>Physical design flow, timing closure, routing, and signoff</span>
+            </div>
+            <div className="metric">
+              <strong>STA</strong>
+              <span>SDC constraints, setup/hold closure, and timing-path analysis</span>
+            </div>
+            <div className="metric">
+              <strong>IC</strong>
+              <span>Backend physical design with device modeling background</span>
+            </div>
+          </aside>
         </section>
 
-        <h2>Physical Design Projects</h2>
+        <Section id="research" eyebrow="Research" title="Research Background">
+          <div className="two-col">
+            {research.map((item) => (
+              <div className="mini-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <div className="org">{item.org}</div>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
-        {projects.map((p) => (
-          <ProjectCard key={p.title} p={p} />
-        ))}
+        <Section id="projects" eyebrow="Selected Work" title="Physical Design Projects">
+          <div className="project-grid">
+            {projects.map((project) => (
+              <article className="project" key={project.title}>
+                <div className="project-top">
+                  <div>
+                    <h3>{project.title}</h3>
+                    <div className="type">{project.type}</div>
+                    {project.weight && (
+                      <div className="weight">
+                        <span>{project.weight}</span>
+                        <small>{project.weightLabel}</small>
+                      </div>
+                    )}
+                  </div>
+                  <div className="period">{project.period}</div>
+                </div>
+
+                <p>{project.description}</p>
+
+                {project.metrics && <div className="metrics">{project.metrics}</div>}
+
+                <div className="tags">
+                  {project.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </div>
+
+                {project.swcaos && (
+                  <details className="swcaos">
+                    <summary>View SWCAOS Breakdown</summary>
+                    {Object.entries(project.swcaos).map(([key, value]) => (
+                      <div className="swcaos-item" key={key}>
+                        <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
+                        <p>{value}</p>
+                      </div>
+                    ))}
+                  </details>
+                )}
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="experience" eyebrow="Experience" title="Professional Experience">
+          <div className="experience-list">
+            {experience.map(([role, company, desc]) => (
+              <div className="mini-card" key={role + company}>
+                <h3>{role}</h3>
+                <div className="org">{company}</div>
+                <p>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="skills" eyebrow="Skills" title="Technical Skills">
+          <div className="skill-cloud">
+            {skills.map((skill) => (
+              <span className="skill" key={skill}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </Section>
+
+        <section id="contact" className="contact">
+          <div>
+            <p className="eyebrow" style={{ color: "#aebcff" }}>
+              Contact
+            </p>
+            <h2>Let’s connect.</h2>
+            <p>{profile.location} · Open to physical design, IC design, and hardware engineering opportunities.</p>
+          </div>
+          <div className="contact-links">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={`tel:${profile.phone}`}>{profile.phone}</a>
+            <a href={`https://${profile.linkedin}`}>{profile.linkedin}</a>
+            <a href={`https://${profile.github}`}>{profile.github}</a>
+          </div>
+        </section>
       </main>
     </>
   );
