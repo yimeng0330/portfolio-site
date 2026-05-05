@@ -38,12 +38,52 @@ const projects = [
     },
   },
   {
-    title: "Physical Design Flow and Timing Closure",
-    type: "Backend IC Design",
-    period: "2025",
-    tags: ["Innovus", "MMMC", "Routing", "Power Grid", "Timing"],
+    title: "Traffic Light Controller ASIC Implementation",
+    type: "FSM Control Logic · RTL-to-GDS · Backend Optimization",
+    period: "2024",
+    tags: ["Verilog", "FSM", "SDC", "Design Compiler", "Innovus", "Floorplan", "CTS", "QRC", "DRC/LVS"],
+    metrics:
+      "100 MHz · slack = 7.81 ns · utilization reduced 88% → 47% · clean DRC/LVS",
     description:
-      "Implemented a physical design flow including floorplanning, placement, routing, RC extraction, and timing/power analysis. Investigated utilization, timing-driven placement, optimization stages, and WNS/TNS closure behavior.",
+      "Implemented an FSM-based traffic light controller and completed synthesis, STA, floorplanning, placement, CTS, routing, parasitic extraction, and physical verification, with emphasis on floorplan tuning, density reduction, and backend debug.",
+    swcaos: {
+      situation:
+        "Designed and implemented an FSM-based traffic light controller and completed full ASIC backend flow including synthesis, placement, routing, and physical verification under realistic timing constraints.",
+      what:
+        "Developed RTL and testbench for traffic control logic, created SDC constraints for 100 MHz clock, I/O delay, fanout, load, and transition, and executed synthesis, STA, Innovus physical implementation, QRC extraction, and DRC/LVS verification.",
+      challenge:
+        "The initial floorplan produced ~88% utilization, creating severe congestion and unrealistic layout density. Pin Guide, Endcap, and WellTap insertion were also difficult due to mismatch between design size, row structure, and default tool settings.",
+      action:
+        "Manually optimized pin placement, adjusted floorplan dimensions beyond the default auto-generated size, customized WellTap insertion with row spacing of 20 and offset of 15, tuned power stripe and WellTap placement, and iteratively refined placement/routing to improve routability and power grid quality.",
+      outcome:
+        "Reduced chip utilization from 88% to ~47%, significantly improving routability and layout feasibility. Achieved clean timing closure with slack = 7.81 ns, completed route and parasitic extraction, and passed DRC/LVS verification.",
+      significance:
+        "Demonstrated practical backend debug ability beyond simply running the flow, especially in congestion analysis, floorplan tuning, WellTap/Endcap handling, power grid planning, and understanding how physical constraints affect timing and routing.",
+    },
+  },
+  {
+    title: "ASIC ALU Full-Flow Implementation",
+    type: "Digital ASIC · RTL-to-GDS · Signoff Flow",
+    period: "2024",
+    tags: ["Verilog", "Design Compiler", "Formal Verification", "Tempus", "QRC", "Innovus", "SPEF/SDF"],
+    metrics:
+      "slack > 0 · 100% annotated coverage · SPEF/SDF generated · clean DRC/LVS",
+    description:
+      "Completed a full ASIC implementation flow for an ALU design, covering RTL verification, synthesis, formal equivalence checking, STA, physical design, parasitic extraction, post-layout simulation, and DRC/LVS verification.",
+    swcaos: {
+      situation:
+        "Completed a full ASIC design project based on an Arithmetic Logic Unit as part of a digital IC design course, covering the complete RTL-to-GDSII implementation flow.",
+      what:
+        "Designed ALU RTL and verification testbench, performed synthesis using Design Compiler, developed SDC constraints, conducted STA and formal verification, executed physical design in Innovus, and completed QRC extraction and DRC/LVS checks.",
+      challenge:
+        "Needed to ensure timing closure across synthesis and post-route stages, maintain equivalence between RTL, synthesized netlist, and routed netlist, and account for parasitic-induced timing changes after extraction.",
+      action:
+        "Built SDC constraints, optimized slack during synthesis, used R2G and G2G formal verification, performed QRC and Tempus timing analysis, generated setup/hold/DRV/noise reports, and debugged physical verification issues.",
+      outcome:
+        "Achieved positive slack, 100% annotated net coverage in post-layout timing analysis, generated SPEF/SDF files for accurate post-layout simulation, and passed DRC/LVS verification.",
+      significance:
+        "Demonstrated end-to-end RTL-to-GDSII capability and built practical understanding of timing closure, physical effects, and backend signoff using industry-style EDA tools.",
+    },
   },
   {
     title: "Folded-Cascode Fully Differential Op Amp",
@@ -89,12 +129,19 @@ const skills = [
   "Spectre",
   "Innovus",
   "Genus",
-  "Synopsys DC",
+  "Synopsys Design Compiler",
+  "Tempus",
+  "QRC",
   "Verilog",
   "Python",
   "Tcl",
   "Static Timing Analysis",
+  "SDC",
   "RTL-to-GDS",
+  "Floorplanning",
+  "CTS",
+  "Routing",
+  "DRC/LVS",
   "Analog IC",
   "RF IC",
   "TCAD",
@@ -628,7 +675,6 @@ export default function App() {
                 {project.swcaos && (
                   <details className="swcaos">
                     <summary>View SWCAOS Breakdown</summary>
-
                     {Object.entries(project.swcaos).map(([key, value]) => (
                       <div className="swcaos-item" key={key}>
                         <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
