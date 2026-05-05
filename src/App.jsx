@@ -45,7 +45,7 @@ const projects = [
   {
     title: "Traffic Light Controller ASIC Implementation",
     type: "FSM Control Logic · RTL-to-GDS · SMIC 180nm",
-    period: "Sep. 2024 – Dec. 2024",
+    period: "Jan. 2025 – Mar. 2025",
     weight: "★★★☆☆",
     weightLabel: "Backend Debug Project",
     tags: [
@@ -80,29 +80,29 @@ const projects = [
     },
   },
   {
-    title: "ASIC ALU RTL-to-Synthesis Implementation (Course Lab)",
-    type: "Course Lab · Backend Practice · RTL · Synthesis · STA",
-    period: "Sep. 2024 – Dec. 2024",
-    weight: "★★☆☆☆",
-    weightLabel: "Foundation Lab",
-    tags: ["Verilog", "Design Compiler", "Formal Verification", "STA"],
-    metrics:
-      "positive timing slack · 100% annotated timing coverage · RTL–gate equivalence verified",
-    description:
-      "Completed an ALU design as part of a digital IC course lab, including RTL implementation, synthesis, timing analysis, and formal verification, serving as a foundation for backend physical design practice.",
-    swcaos: {
-      situation:
-        "Completed an ALU design as part of a digital IC course lab, focusing on understanding RTL-to-synthesis flow and timing analysis fundamentals.",
-      what:
-        "Designed ALU RTL and testbench in Verilog, performed synthesis using Design Compiler, developed SDC constraints, and conducted STA and formal equivalence verification.",
-      challenge:
-        "Ensuring timing closure under defined constraints and maintaining equivalence between RTL and synthesized netlist.",
-      action:
-        "Built SDC constraints, analyzed timing paths, iteratively optimized slack during synthesis, and used formal verification to validate RTL-to-gate equivalence.",
-      outcome:
-        "Achieved positive timing slack, full annotated timing coverage, and successful RTL–gate equivalence verification.",
-      significance:
-        "Built foundational understanding of digital backend flow, timing constraints, and verification, forming the basis for more advanced physical design projects.",
+      title: "ASIC ALU RTL-to-Synthesis Implementation (Course Lab)",
+      type: "Course Lab · Backend Practice · RTL · Synthesis · STA",
+      period: "Sep. 2024 – Dec. 2024",
+      weight: "★★☆☆☆",
+      weightLabel: "Foundation Lab",
+      tags: ["Verilog", "Design Compiler", "STA", "Formal Verification", "QRC", "Tempus"],
+      metrics:
+        "Flow learning: RTL simulation · DC synthesis · STA · equivalence check · QRC/Tempus exposure",
+      description:
+        "Completed an ALU design as part of a digital IC course lab, covering RTL implementation, synthesis, timing analysis, and backend flow exposure.",
+      swcaos: {
+        situation:
+          "Completed an ALU design as part of a digital IC course lab to understand the end-to-end ASIC design flow from RTL to post-layout verification.",
+        what:
+          "Designed ALU RTL and testbench in Verilog and went through simulation, synthesis, timing analysis, equivalence checking, parasitic extraction, and physical implementation stages.",
+        challenge:
+          "As an early course lab, the main challenge was limited familiarity with the ASIC toolchain and backend flow. I initially did not fully understand the purpose of each stage, including why RTL simulation, synthesis, formal verification, STA, parasitic extraction, physical implementation, and DRC/LVS were performed separately.", 
+        action:
+          "Worked through the ALU flow step by step: completed RTL/testbench simulation using VCS and DVE, ran Design Compiler synthesis with timing constraints, checked timing slack, used equivalence checking scripts for RTL-to-gate validation, performed QRC parasitic extraction, analyzed timing reports in Tempus, and practiced Innovus-based physical implementation and layout verification. Reviewed scripts and reports to understand data flow across stages, including RTL, netlist, SDC, SPEF, and timing reports.",
+        outcome:
+          "Built a clear end-to-end understanding of the digital ASIC implementation flow from RTL to post-layout verification, and learned how each EDA stage contributes to functional correctness, timing closure, and physical realizability.",
+        significance:
+          "Established a solid foundation for backend physical design, which directly enabled later independent projects such as the Traffic Light Controller, where I applied the flow to solve real backend issues including floorplan tuning, congestion reduction, and utilization optimization.",
     },
   },
   {
