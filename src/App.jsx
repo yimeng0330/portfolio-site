@@ -1,4 +1,3 @@
-import "https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css";
 import React from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin, FileText, Cpu, Radio, Workflow, GraduationCap, BriefcaseBusiness, ExternalLink } from "lucide-react";
