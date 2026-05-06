@@ -104,13 +104,19 @@ const pdProjects = [
     },
   },
 ];
-
+// ===== Supporting Projects =====
 const supportingProjects = [
   {
     title: "Fully-Differential Folded-Cascode Op Amp",
     type: "Analog IC Design · TSMC 180nm · Advisor: Prof. Behzad Razavi",
     period: "Dec. 2025",
-    tags: ["Virtuoso", "Spectre", "Analog Layout", "CMFB", "Post-Layout Simulation"],
+    tags: [
+      "Virtuoso",
+      "Spectre",
+      "Analog Layout",
+      "CMFB",
+      "Post-Layout Simulation",
+    ],
     metrics:
       "Gain ≈ 8 · 1.6 Vpp swing · <1% gain error · 2 pF load · 14.2 ns @ 9.56 mW / 49.5 ns @ 2.57 mW",
     description:
@@ -120,19 +126,63 @@ const supportingProjects = [
       "Explored speed–power trade-offs via bias current and feedback capacitor scaling",
     ],
   },
+
   {
-    title: "24 GHz LC VCO Design",
-    type: "RF IC Design",
-    period: "2024",
-    tags: ["LC VCO", "RF", "Phase Noise", "Cadence", "Layout"],
+    title: "MASH-111 ΔΣ Modulator",
+    type: "Digital IC Design · TSMC 16nm · Advisor: Prof. Hooman Darabi",
+    period: "Oct. 2025 – Dec. 2025",
+    tags: [
+      "Verilog",
+      "Delta-Sigma",
+      "Fractional-N PLL",
+      "Synthesis",
+      "STA",
+      "TSMC 16nm",
+    ],
+    metrics:
+      "500 MHz · setup slack 0.83/0.94 ns · hold slack 0.00 ns · 186 μm² · 0.21/0.22 mW",
     description:
-      "Designed and analyzed a high-frequency LC voltage-controlled oscillator, covering oscillation condition, frequency tuning, phase noise, power consumption, and RF layout-sensitive tradeoffs.",
+      "Designed a 3rd-order MASH-111 digital ΔΣ modulator for fractional-N PLL applications in Verilog, with cascaded 1-bit stages, signed arithmetic handling, and pipeline alignment for 500 MHz timing closure.",
+    highlights: [
+      "Validated functionality across DC inputs and clock/reset conditions using verification testbench",
+      "Achieved no timing violations in DC/PrimeTime with optimized area and power at 16nm",
+    ],
   },
+
+  {
+    title: "Nanosheet FET / TFET TCAD Modeling and Parameter Extraction",
+    type: "Device Modeling · Sentaurus TCAD · Research Assistant",
+    period: "Nov. 2023 – Jun. 2024",
+    tags: [
+      "Sentaurus TCAD",
+      "GAAFET",
+      "TFET",
+      "28nm MOSFET",
+      "BSIM4",
+      "Parameter Extraction",
+      "Quantum Effects",
+    ],
+    description:
+      "Conducted TCAD-based modeling and optimization research on nanosheet FETs, TFETs, and 28nm MOSFETs, studying device electrical characteristics, process-dependent behavior, and scaling-related quantum effects.",
+    highlights: [
+      "Extracted 18 electrical parameters based on the BSIM4 model and validated simulation behavior against experimental data",
+      "Analyzed the impact of gate length, bias conditions, and temperature on switching speed, leakage, and power consumption",
+      "Gained understanding of quantum confinement and tunneling effects in advanced GAA and TFET device structures",
+    ],
+  },
+
   {
     title: "Digital Datapath Arithmetic Unit Design",
     type: "Digital Frontend · RTL Design",
     period: "Jan. 2023 – Mar. 2023",
-    tags: ["Verilog", "RTL", "Datapath", "Testbench", "Synthesis", "Timing"],
+    tags: [
+      "Verilog",
+      "RTL",
+      "Datapath",
+      "Testbench",
+      "Synthesis",
+      "Timing",
+    ],
     description:
       "Designed and implemented an 8-bit absolute-value datapath in Verilog, focusing on signed arithmetic handling using two’s complement representation.",
     highlights: [
@@ -140,6 +190,19 @@ const supportingProjects = [
       "Verified corner cases (-8, -1, 0, +7) through waveform-based simulation",
       "Performed RTL-to-gate synthesis and achieved ~12.7 ns critical path delay",
       "Gained early exposure to timing constraints and datapath optimization",
+    ],
+  },
+
+  {
+    title: "Electronic Password Lock on Altera DE2-35 FPGA",
+    type: "FPGA · Verilog · Undergraduate Course Project",
+    period: "May. 2023",
+    tags: ["Verilog", "FPGA", "Quartus II", "FSM", "DE2-35"],
+    description:
+      "Designed and implemented an electronic password lock on an Altera DE2-35 FPGA board using Verilog HDL in Quartus II, supporting user-configurable password logic and visual feedback control.",
+    highlights: [
+      "Implemented password verification and control logic using FSM-based architecture",
+      "Gained early hands-on experience with FPGA-based digital design and hardware debugging",
     ],
   },
 ];
