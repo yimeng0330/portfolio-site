@@ -128,6 +128,20 @@ const supportingProjects = [
     description:
       "Designed and analyzed a high-frequency LC voltage-controlled oscillator, covering oscillation condition, frequency tuning, phase noise, power consumption, and RF layout-sensitive tradeoffs.",
   },
+  {
+    title: "Digital Datapath Arithmetic Unit Design",
+    type: "Digital Frontend · RTL Design",
+    period: "Jan. 2023 – Mar. 2023",
+    tags: ["Verilog", "RTL", "Datapath", "Testbench", "Synthesis", "Timing"],
+    description:
+      "Designed and implemented an 8-bit absolute-value datapath in Verilog, focusing on signed arithmetic handling using two’s complement representation.",
+    highlights: [
+      "Developed modular RTL including sign detection, conditional inversion, and increment logic",
+      "Verified corner cases (-8, -1, 0, +7) through waveform-based simulation",
+      "Performed RTL-to-gate synthesis and achieved ~12.7 ns critical path delay",
+      "Gained early exposure to timing constraints and datapath optimization",
+    ],
+  },
 ];
 
 const research = [
@@ -147,25 +161,28 @@ const research = [
 
 const experience = [
   {
-    role: "Digital IC Design Intern",
-    company: "DigiCube Info&Tech",
+    role: "RF IC Design Intern",
+    company: "Lingchip Microelectronics (Hangzhou) Co., Ltd.",
     location: "Shanghai, China",
-    period: "Nov. 2024 – Sep. 2025",
-    subtitle: "Digital Datapath Arithmetic Unit Design · Block-Level ASIC Flow",
+    period: "Mar. 2025 – Jun. 2025",
+    subtitle: "24 GHz LC VCO Design · GTA 40nm CMOS",
     bullets: [
-      "Implemented an 8-bit absolute-value datapath in Verilog with signed arithmetic handling using two’s complement.",
-      "Developed testbenches and verified corner cases including min negative, -1, 0, and max positive through simulation.",
-      "Performed RTL-to-gate implementation including synthesis and timing analysis using Cadence tools.",
-      "Gained exposure to block-level place-and-route flow and analyzed timing after optimization, achieving ~12.7 ns critical path.",
+      "Designed and implemented a 24 GHz LC voltage-controlled oscillator (VCO) in GTA 40nm CMOS process (JITA Semiconductor), covering schematic design, RF analysis, and full-custom layout.",
+      "Performed system-level analysis to determine inductance, capacitance, and required negative transconductance (-gm) for startup and stable oscillation.",
+      "Designed cross-coupled NMOS core and multiple LC tank configurations to optimize tuning range and KVCO characteristics.",
+      "Conducted DC, transient, harmonic balance, and phase noise simulations to evaluate oscillation performance.",
+      "Completed full-custom layout and post-layout verification including EMX electromagnetic modeling, S-parameter analysis, and DRC/LVS signoff.",
     ],
     skills: [
-      "Verilog",
-      "Testbench",
-      "RTL-to-Gate",
-      "Synthesis",
-      "Timing Analysis",
-      "Cadence Tools",
-      "Block-Level PnR Exposure",
+      "RF IC Design",
+      "LC VCO",
+      "GTA 40nm",
+      "Cadence Virtuoso",
+      "EMX",
+      "S-Parameter",
+      "Phase Noise",
+      "Full-Custom Layout",
+      "DRC/LVS",
     ],
   },
   {
