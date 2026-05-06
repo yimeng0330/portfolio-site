@@ -109,12 +109,18 @@ const pdProjects = [
 
 const supportingProjects = [
   {
-    title: "Folded-Cascode Fully Differential Op Amp",
-    type: "Analog IC Design",
-    period: "2025",
-    tags: ["Virtuoso", "Spectre", "CMFB", "Settling", "Power"],
+    title: "Fully-Differential Folded-Cascode Op Amp",
+    type: "Analog IC Design · Analog Layout · TSMC 180nm · Advisor: Prof. Behzad Razavi",
+    period: "Dec. 2025",
+    tags: ["Virtuoso", "Spectre", "Analog Layout", "CMFB", "Post-Layout Simulation"],
+    metrics:
+      "Gain ≈ 8 · 1.6 Vpp swing · <1% gain error · 2 pF load · 14.2 ns @ 9.56 mW / 49.5 ns @ 2.57 mW",
     description:
-      "Designed a fully differential folded-cascode operational amplifier with NMOS input pair and common-mode feedback. Optimized versions for fast settling and low-power operation through schematic-level simulations.",
+      "Designed a 1.8 V fully-differential folded-cascode op-amp with NMOS input pair and CMFB in TSMC 180nm. Completed analog layout and post-layout simulation including parasitic extraction, demonstrating clear speed–power trade-offs.",
+    highlights: [
+      "Completed full analog flow: schematic → layout → post-layout verification",
+      "Explored speed–power trade-offs via bias current and feedback capacitor scaling",
+    ],
   },
   {
     title: "24 GHz LC VCO Design",
@@ -142,9 +148,53 @@ const research = [
 ];
 
 const experience = [
-  ["Research Assistant", "UCLA High-Speed Mixed-Signal Lab", "High-speed mixed-signal IC design research."],
-  ["Intern", "NXP Semiconductors", "Semiconductor engineering internship experience."],
-  ["Reader", "UCLA ECE 149", "Supported grading, exam logistics, and course instruction."],
+  {
+    role: "Digital IC Design Intern",
+    company: "DigiCube Semiconductors",
+    location: "Shanghai, China",
+    period: "Nov. 2024 – Sep. 2025",
+    subtitle: "Digital Datapath Arithmetic Unit Design · Block-Level ASIC Flow",
+    bullets: [
+      "Implemented an 8-bit absolute-value datapath in Verilog with signed arithmetic handling using two’s complement.",
+      "Developed testbenches and verified corner cases including min negative, -1, 0, and max positive through simulation.",
+      "Performed RTL-to-gate implementation including synthesis and timing analysis using Cadence tools.",
+      "Gained exposure to block-level place-and-route flow and analyzed timing after optimization, achieving ~12.7 ns critical path.",
+    ],
+    skills: [
+      "Verilog",
+      "Testbench",
+      "RTL-to-Gate",
+      "Synthesis",
+      "Timing Analysis",
+      "Cadence Tools",
+      "Block-Level PnR Exposure",
+    ],
+  },
+  {
+    role: "MPU Application Engineering Intern",
+    company: "NXP Semiconductors",
+    location: "Shanghai, China",
+    period: "May 2024 – Dec. 2024",
+    subtitle: "Signal Testing · System Validation · Test Automation",
+    bullets: [
+      "Performed USB 2.0 and LPDDR4 signal testing using Keysight oscilloscopes, ensuring signal integrity, timing accuracy, and compliance with JEDEC specifications.",
+      "Analyzed waveforms to evaluate signal fidelity, timing margins, and data stability, and troubleshot signal quality issues.",
+      "Developed test automation scripts and performed data analysis using MATLAB and Origin, improving testing efficiency and reliability.",
+      "Collaborated with senior engineers to debug and optimize MPU system performance based on test results and validation feedback.",
+    ],
+    skills: [
+      "USB 2.0 Signal Testing",
+      "LPDDR4 Signal Validation",
+      "Keysight Oscilloscope",
+      "Signal Integrity",
+      "Timing Margin Analysis",
+      "JEDEC Specs",
+      "MATLAB",
+      "Origin",
+      "Test Automation",
+      "Debugging",
+    ],
+  },
 ];
 
 const skills = [
@@ -212,6 +262,14 @@ function ProjectCard({ project }) {
         ))}
       </div>
 
+      {project.highlights && (
+        <ul className="highlights">
+          {project.highlights.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )}
+
       {project.swcaos && (
         <details className="swcaos">
           <summary>View SWCAOS Breakdown</summary>
@@ -222,6 +280,38 @@ function ProjectCard({ project }) {
             </div>
           ))}
         </details>
+      )}
+    </article>
+  );
+}
+
+function InternshipCard({ item }) {
+  return (
+    <article className="internship-card">
+      <div className="internship-top">
+        <div>
+          <h3>{item.role}</h3>
+          <div className="org">{item.company}</div>
+          <p className="internship-subtitle">{item.subtitle}</p>
+        </div>
+        <div className="internship-meta">
+          <span>{item.period}</span>
+          <span>{item.location}</span>
+        </div>
+      </div>
+
+      <ul className="internship-bullets">
+        {item.bullets.map((bullet, index) => (
+          <li key={index}>{bullet}</li>
+        ))}
+      </ul>
+
+      {item.skills && (
+        <div className="tags">
+          {item.skills.map((skill) => (
+            <Tag key={skill}>{skill}</Tag>
+          ))}
+        </div>
       )}
     </article>
   );
@@ -282,9 +372,7 @@ export default function App() {
 
         .links a:hover { color: var(--ink); }
 
-        .dropdown {
-          position: relative;
-        }
+        .dropdown { position: relative; }
 
         .dropdown-menu {
           display: none;
@@ -332,7 +420,8 @@ export default function App() {
         .hero-card,
         .side-card,
         .project,
-        .mini-card {
+        .mini-card,
+        .internship-card {
           background: rgba(255, 255, 255, 0.86);
           border: 1px solid var(--line);
           border-radius: 28px;
@@ -448,46 +537,75 @@ export default function App() {
           letter-spacing: -0.05em;
         }
 
-        .project-grid {
+        .project-grid,
+        .internship-list {
           display: grid;
           gap: 18px;
         }
 
-        .project {
+        .project,
+        .internship-card {
           padding: 28px;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .project:hover {
+        .project:hover,
+        .internship-card:hover {
           transform: translateY(-3px);
           box-shadow: 0 26px 70px rgba(15, 23, 42, 0.11);
         }
 
-        .project-top {
+        .project-top,
+        .internship-top {
           display: flex;
           justify-content: space-between;
           gap: 18px;
           align-items: flex-start;
         }
 
-        .project h3 {
+        .project h3,
+        .internship-card h3 {
           margin: 0;
           font-size: 24px;
           letter-spacing: -0.035em;
         }
 
-        .project .type {
+        .project .type,
+        .internship-card .org {
           margin-top: 6px;
           color: var(--accent);
           font-weight: 750;
           font-size: 14px;
         }
 
-        .period {
+        .period,
+        .internship-meta {
           color: var(--muted);
           font-size: 14px;
           white-space: nowrap;
         }
+
+        .internship-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          align-items: flex-end;
+        }
+
+        .internship-subtitle {
+          margin: 10px 0 0;
+          color: #465267;
+          font-weight: 650;
+        }
+
+        .internship-bullets {
+          margin: 20px 0 0;
+          padding-left: 20px;
+          color: #465267;
+          line-height: 1.7;
+        }
+
+        .internship-bullets li { margin-bottom: 8px; }
 
         .weight {
           margin-top: 10px;
@@ -542,6 +660,15 @@ export default function App() {
           font-size: 12px;
           font-weight: 700;
         }
+
+        .highlights {
+          margin-top: 16px;
+          padding-left: 20px;
+          color: #4b5668;
+          line-height: 1.65;
+        }
+
+        .highlights li { margin-bottom: 6px; }
 
         .swcaos {
           margin-top: 20px;
@@ -603,12 +730,6 @@ export default function App() {
           margin: 0;
         }
 
-        .experience-list {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 18px;
-        }
-
         .skill-cloud {
           display: flex;
           flex-wrap: wrap;
@@ -663,8 +784,7 @@ export default function App() {
           .links { display: none; }
 
           .hero,
-          .two-col,
-          .experience-list {
+          .two-col {
             grid-template-columns: 1fr;
           }
 
@@ -673,11 +793,16 @@ export default function App() {
           .hero-card { padding: 28px; }
 
           .project-top,
+          .internship-top,
           .contact {
             flex-direction: column;
           }
 
-          .period { white-space: normal; }
+          .period,
+          .internship-meta {
+            white-space: normal;
+            align-items: flex-start;
+          }
         }
       `}</style>
 
@@ -695,7 +820,7 @@ export default function App() {
                 <a href="#supporting-projects">Supporting Projects</a>
               </div>
             </div>
-            <a href="#experience">Experience</a>
+            <a href="#experience">Industry</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
           </div>
@@ -764,14 +889,10 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="experience" eyebrow="Experience" title="Professional Experience">
-          <div className="experience-list">
-            {experience.map(([role, company, desc]) => (
-              <div className="mini-card" key={role + company}>
-                <h3>{role}</h3>
-                <div className="org">{company}</div>
-                <p>{desc}</p>
-              </div>
+        <Section id="experience" eyebrow="Industry" title="Internship">
+          <div className="internship-list">
+            {experience.map((item) => (
+              <InternshipCard key={item.role + item.company} item={item} />
             ))}
           </div>
         </Section>
