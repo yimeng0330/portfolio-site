@@ -7,8 +7,6 @@ const profile = {
   location: "Los Angeles, CA",
   email: "yimeng0330@ucla.edu",
   phone: "+1 3109488751",
-  linkedin: "linkedin.com/in/your-profile",
-  github: "linkedin.com/in/your-profile",
   summary:
     "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across RTL-to-GDS physical design, RTL implementation, semiconductor device modeling and analog/RF IC design. My work connects digital implementation, circuit-level design, and device-level understanding to enable efficient and robust integrated circuit systems.",
 };
@@ -104,7 +102,7 @@ const pdProjects = [
     },
   },
 ];
-// ===== Supporting Projects =====
+
 const supportingProjects = [
   {
     title: "Fully-Differential Folded-Cascode Op Amp",
@@ -126,7 +124,6 @@ const supportingProjects = [
       "Explored speed–power trade-offs via bias current and feedback capacitor scaling",
     ],
   },
-
   {
     title: "MASH-111 ΔΣ Modulator",
     type: "Digital IC Design · TSMC 16nm · Advisor: Prof. Hooman Darabi",
@@ -148,7 +145,6 @@ const supportingProjects = [
       "Achieved no timing violations in DC/PrimeTime with optimized area and power at 16nm",
     ],
   },
-
   {
     title: "Nanosheet FET / TFET TCAD Modeling and Parameter Extraction",
     type: "Device Modeling · Sentaurus TCAD · Research Assistant",
@@ -170,7 +166,6 @@ const supportingProjects = [
       "Gained understanding of quantum confinement and tunneling effects in advanced GAA and TFET device structures",
     ],
   },
-
   {
     title: "Digital Datapath Arithmetic Unit Design",
     type: "Digital Frontend · RTL Design",
@@ -192,7 +187,6 @@ const supportingProjects = [
       "Gained early exposure to timing constraints and datapath optimization",
     ],
   },
-
   {
     title: "Electronic Password Lock on Altera DE2-35 FPGA",
     type: "FPGA · Verilog · Undergraduate Course Project",
@@ -210,8 +204,9 @@ const supportingProjects = [
 const research = [
   {
     title: "High-Speed Mixed-Signal IC Research",
-    org: "UCLA · Prof. Frank Chang",description:
-  "Supported digital implementation for mixed-signal IC research projects, including Verilog testbench development and backend place-and-route flow.",
+    org: "UCLA · Prof. Frank Chang",
+    description:
+      "Supported digital implementation for mixed-signal IC research projects, including Verilog testbench development and backend place-and-route flow.",
   },
   {
     title: "Advanced Gate-All-Around Device Modeling",
@@ -392,6 +387,25 @@ function InternshipCard({ item }) {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg
+      width="23"
+      height="23"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-10 6L2 7" />
+    </svg>
+  );
+}
+
 export default function App() {
   return (
     <>
@@ -549,6 +563,24 @@ export default function App() {
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
+          align-items: center;
+        }
+
+        .mail-btn {
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          background: var(--ink);
+          color: white;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mail-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 35px rgba(16, 21, 34, 0.22);
         }
 
         .btn {
@@ -557,12 +589,6 @@ export default function App() {
           font-weight: 750;
           font-size: 14px;
           border: 1px solid var(--line);
-        }
-
-        .btn.primary {
-          background: var(--ink);
-          color: white;
-          border-color: var(--ink);
         }
 
         .btn.secondary {
@@ -574,24 +600,56 @@ export default function App() {
           padding: 28px;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          gap: 22px;
         }
 
-        .metric {
+        .photo-placeholder {
+          width: 126px;
+          height: 126px;
+          border-radius: 28px;
+          border: 1px dashed #c7d0e3;
+          background: linear-gradient(135deg, #eef3ff, #ffffff);
+          color: var(--muted);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
+          font-size: 13px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .education-block {
+          padding-top: 2px;
+        }
+
+        .education-block h3 {
+          margin: 0;
+          font-size: 22px;
+          letter-spacing: -0.04em;
+        }
+
+        .education-item {
           padding: 18px 0;
           border-bottom: 1px solid var(--line);
         }
 
-        .metric:last-child { border-bottom: 0; }
-
-        .metric strong {
-          display: block;
-          font-size: 28px;
-          letter-spacing: -0.04em;
+        .education-item:last-child {
+          border-bottom: 0;
+          padding-bottom: 0;
         }
 
-        .metric span {
+        .education-item strong {
+          display: block;
+          font-size: 15px;
+          color: var(--ink);
+          margin-bottom: 6px;
+        }
+
+        .education-item p {
+          margin: 0;
           color: var(--muted);
+          line-height: 1.55;
           font-size: 14px;
         }
 
@@ -911,8 +969,8 @@ export default function App() {
             <p className="focus">{profile.focus}</p>
             <p className="summary">{profile.summary}</p>
             <div className="cta-row">
-              <a className="btn primary" href={`mailto:${profile.email}`}>
-                Contact Me
+              <a className="mail-btn" href={`mailto:${profile.email}`} aria-label="Email Yvonne Sun">
+                <MailIcon />
               </a>
               <a className="btn secondary" href="#pd-projects">
                 View Projects
@@ -921,17 +979,24 @@ export default function App() {
           </div>
 
           <aside className="side-card">
-            <div className="metric">
-              <strong>RTL → GDS</strong>
-              <span>Physical design flow, timing closure, routing, and signoff</span>
-            </div>
-            <div className="metric">
-              <strong>STA</strong>
-              <span>SDC constraints, setup/hold closure, and timing-path analysis</span>
-            </div>
-            <div className="metric">
-              <strong>IC</strong>
-              <span>Backend physical design with device modeling background</span>
+            <div className="photo-placeholder">Photo</div>
+
+            <div className="education-block">
+              <h3>Education</h3>
+
+              <div className="education-item">
+                <strong>University of California, Los Angeles</strong>
+                <p>M.S. Electrical & Computer Engineering</p>
+                <p>Sep. 2025 – Mar. 2027</p>
+                <p>GPA: 4.0 / 4.0</p>
+              </div>
+
+              <div className="education-item">
+                <strong>Shanghai University of Electric Power</strong>
+                <p>B.S. Electronic Science and Technology</p>
+                <p>Sep. 2021 – Jun. 2025</p>
+                <p>GPA: 3.83 / 4.0 · Rank: 1 / 62</p>
+              </div>
             </div>
           </aside>
         </section>
@@ -993,8 +1058,6 @@ export default function App() {
           <div className="contact-links">
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <a href={`tel:${profile.phone}`}>{profile.phone}</a>
-            <a href={`https://${profile.linkedin}`}>{profile.linkedin}</a>
-            <a href={`https://${profile.github}`}>{profile.github}</a>
           </div>
         </section>
       </main>
