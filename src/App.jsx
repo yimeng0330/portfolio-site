@@ -210,13 +210,12 @@ const supportingProjects = [
 const research = [
   {
     title: "High-Speed Mixed-Signal IC Research",
-    org: "UCLA · Frank Chang Lab",
-    description:
-      "Research assistant work in high-speed mixed-signal and RF integrated circuits, including simulation, circuit analysis, and technical documentation.",
+    org: "UCLA · Prof. Frank Chang",description:
+  "Supported digital implementation for mixed-signal IC research projects, including Verilog testbench development and backend place-and-route flow for mixed-signal subsystems.",
   },
   {
-    title: "GAAFET / Nanosheet Device Modeling",
-    org: "Undergraduate Research",
+    title: "Advanced Gate-All-Around Device Modeling",
+    org: "Undergraduate Research · Prof. Weijing Liu",
     description:
       "TCAD-based modeling and analysis of advanced transistor structures, strengthening foundation in semiconductor physics and process-device interaction.",
   },
