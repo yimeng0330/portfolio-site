@@ -211,7 +211,7 @@ const research = [
   {
     title: "High-Speed Mixed-Signal IC Research",
     org: "UCLA · Prof. Frank Chang",description:
-  "Supported digital implementation for mixed-signal IC research projects, including Verilog testbench development and backend place-and-route flow for mixed-signal subsystems.",
+  "Supported digital implementation for mixed-signal IC research projects, including Verilog testbench development and backend place-and-route flow.",
   },
   {
     title: "Advanced Gate-All-Around Device Modeling",
