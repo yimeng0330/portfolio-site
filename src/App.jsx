@@ -8,7 +8,7 @@ const profile = {
   email: "yimeng0330@ucla.edu",
   phone: "+1 3109488751",
   linkedin: "linkedin.com/in/your-profile",
-  github: "github.com/your-github",
+  github: "linkedin.com/in/your-profile",
   summary:
     "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across RTL-to-GDS physical design, RTL implementation, semiconductor device modeling and analog/RF IC design. My work connects digital implementation, circuit-level design, and device-level understanding to enable efficient and robust integrated circuit systems.",
 };
@@ -38,14 +38,12 @@ const pdProjects = [
         "Achieved clean setup/hold timing closure at 20 MHz. Final design metrics include 279,723 μm² area, 68.8% utilization, 5528-cycle latency, and 90.2% functional accuracy verified against Python reference outputs. Post-silicon validation is planned for Oct. 2026 – Dec. 2026.",
       significance:
         "Built practical understanding of how floorplanning, routing congestion, CTS, timing constraints, and signoff verification interact in a complete backend physical design flow from RTL to tape-out readiness.",
-      testing:
-        "Planned silicon validation flow: an FPGA host controls reset, clock, and configuration, streams quantized MNIST image data into the chip through the narrow-I/O wrapper, captures the predicted label, and compares chip outputs with Python and RTL golden results. The setup can support both stored MNIST test vectors and external camera input after preprocessing, grayscale conversion, resizing, and quantization.",
     },
   },
   {
     title: "Traffic Light Controller ASIC Implementation",
     type: "FSM Control Logic · RTL-to-GDS · SMIC 180nm",
-    period: "Jan. 2025 – Mar. 2025",
+    period: "Oct. 2024 – Jan. 2025",
     weight: "★★★☆☆",
     weightLabel: "Backend Debug Project",
     tags: [
@@ -80,9 +78,9 @@ const pdProjects = [
     },
   },
   {
-    title: "ASIC ALU RTL-to-Synthesis Implementation (Course Lab)",
-    type: "Course Lab · Backend Practice · RTL · Synthesis · STA",
-    period: "Sep. 2024 – Dec. 2024",
+    title: "ASIC ALU RTL-to-Synthesis Implementation",
+    type: "Course Lab · Backend Practice",
+    period: "Sep. 2024 – Oct. 2024",
     weight: "★★☆☆☆",
     weightLabel: "Foundation Lab",
     tags: ["Verilog", "Design Compiler", "STA", "Formal Verification", "QRC", "Tempus"],
@@ -110,7 +108,7 @@ const pdProjects = [
 const supportingProjects = [
   {
     title: "Fully-Differential Folded-Cascode Op Amp",
-    type: "Analog IC Design · Analog Layout · TSMC 180nm · Advisor: Prof. Behzad Razavi",
+    type: "Analog IC Design · TSMC 180nm · Advisor: Prof. Behzad Razavi",
     period: "Dec. 2025",
     tags: ["Virtuoso", "Spectre", "Analog Layout", "CMFB", "Post-Layout Simulation"],
     metrics:
@@ -150,7 +148,7 @@ const research = [
 const experience = [
   {
     role: "Digital IC Design Intern",
-    company: "DigiCube Semiconductors",
+    company: "DigiCube Info&Tech",
     location: "Shanghai, China",
     period: "Nov. 2024 – Sep. 2025",
     subtitle: "Digital Datapath Arithmetic Unit Design · Block-Level ASIC Flow",
@@ -174,7 +172,7 @@ const experience = [
     role: "MPU Application Engineering Intern",
     company: "NXP Semiconductors",
     location: "Shanghai, China",
-    period: "May 2024 – Dec. 2024",
+    period: "May. 2024 – Sep. 2024",
     subtitle: "Signal Testing · System Validation · Test Automation",
     bullets: [
       "Performed USB 2.0 and LPDDR4 signal testing using Keysight oscilloscopes, ensuring signal integrity, timing accuracy, and compliance with JEDEC specifications.",
@@ -183,8 +181,8 @@ const experience = [
       "Collaborated with senior engineers to debug and optimize MPU system performance based on test results and validation feedback.",
     ],
     skills: [
-      "USB 2.0 Signal Testing",
-      "LPDDR4 Signal Validation",
+      "USB 2.0",
+      "LPDDR4",
       "Keysight Oscilloscope",
       "Signal Integrity",
       "Timing Margin Analysis",
@@ -210,14 +208,12 @@ const skills = [
   "Tcl",
   "Static Timing Analysis",
   "SDC",
-  "RTL-to-GDS",
   "Floorplanning",
   "CTS",
   "Routing",
   "DRC/LVS",
   "Analog IC",
-  "RF IC",
-  "TCAD",
+  "Sentaurus TCAD",
   "FinFET / GAAFET",
 ];
 
