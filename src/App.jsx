@@ -905,7 +905,7 @@ export default function App() {
       <main id="top" className="container">
         <section className="hero">
           <div className="hero-card">
-            <span className="pill">IC Physical Design Portfolio · Open to Internship Opportunities</span>
+            <span className="pill">Welcome to My Portfolio · Open to 26 Internship/27 New Grad Full-time Opportunities</span>
             <h1>{profile.name}</h1>
             <p className="subtitle">{profile.subtitle}</p>
             <p className="focus">{profile.focus}</p>
