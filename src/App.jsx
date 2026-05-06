@@ -13,7 +13,7 @@ const profile = {
     "I am a graduate student in Electrical and Computer Engineering at UCLA with hands-on experience across RTL-to-GDS physical design, RTL implementation, semiconductor device modeling and analog/RF IC design. My work connects digital implementation, circuit-level design, and device-level understanding to enable efficient and robust integrated circuit systems.",
 };
 
-const projects = [
+const pdProjects = [
   {
     title: "Tape-Out of Quantized MNIST CNN Accelerator",
     type: "Digital IC · RTL-to-GDS · TSMC 180nm",
@@ -80,31 +80,34 @@ const projects = [
     },
   },
   {
-      title: "ASIC ALU RTL-to-Synthesis Implementation (Course Lab)",
-      type: "Course Lab · Backend Practice · RTL · Synthesis · STA",
-      period: "Sep. 2024 – Dec. 2024",
-      weight: "★★☆☆☆",
-      weightLabel: "Foundation Lab",
-      tags: ["Verilog", "Design Compiler", "STA", "Formal Verification", "QRC", "Tempus"],
-      metrics:
-        "Flow learning: RTL simulation · DC synthesis · STA · equivalence check · QRC/Tempus exposure",
-      description:
-        "Completed an ALU design as part of a digital IC course lab, covering RTL implementation, synthesis, timing analysis, and backend flow exposure.",
-      swcaos: {
-        situation:
-          "Completed an ALU design as part of a digital IC course lab to understand the end-to-end ASIC design flow from RTL to post-layout verification.",
-        what:
-          "Designed ALU RTL and testbench in Verilog and went through simulation, synthesis, timing analysis, equivalence checking, parasitic extraction, and physical implementation stages.",
-        challenge:
-          "As an early course lab, the main challenge was limited familiarity with the ASIC toolchain and backend flow. I initially did not fully understand the purpose of each stage, including why RTL simulation, synthesis, formal verification, STA, parasitic extraction, physical implementation, and DRC/LVS were performed separately.", 
-        action:
-          "Worked through the ALU flow step by step: completed RTL/testbench simulation using VCS and DVE, ran Design Compiler synthesis with timing constraints, checked timing slack, used equivalence checking scripts for RTL-to-gate validation, performed QRC parasitic extraction, analyzed timing reports in Tempus, and practiced Innovus-based physical implementation and layout verification. Reviewed scripts and reports to understand data flow across stages, including RTL, netlist, SDC, SPEF, and timing reports.",
-        outcome:
-          "Built a clear end-to-end understanding of the digital ASIC implementation flow from RTL to post-layout verification, and learned how each EDA stage contributes to functional correctness, timing closure, and physical realizability.",
-        significance:
-          "Established a solid foundation for backend physical design, which directly enabled later independent projects such as the Traffic Light Controller, where I applied the flow to solve real backend issues including floorplan tuning, congestion reduction, and utilization optimization.",
+    title: "ASIC ALU RTL-to-Synthesis Implementation (Course Lab)",
+    type: "Course Lab · Backend Practice · RTL · Synthesis · STA",
+    period: "Sep. 2024 – Dec. 2024",
+    weight: "★★☆☆☆",
+    weightLabel: "Foundation Lab",
+    tags: ["Verilog", "Design Compiler", "STA", "Formal Verification", "QRC", "Tempus"],
+    metrics:
+      "Flow learning: RTL simulation · DC synthesis · STA · equivalence check · QRC/Tempus exposure",
+    description:
+      "Completed an ALU design as part of a digital IC course lab, covering RTL implementation, synthesis, timing analysis, and backend flow exposure.",
+    swcaos: {
+      situation:
+        "Completed an ALU design as part of a digital IC course lab to understand the end-to-end ASIC design flow from RTL to post-layout verification.",
+      what:
+        "Designed ALU RTL and testbench in Verilog and went through simulation, synthesis, timing analysis, equivalence checking, parasitic extraction, and physical implementation stages.",
+      challenge:
+        "As an early course lab, the main challenge was limited familiarity with the ASIC toolchain and backend flow. I initially did not fully understand the purpose of each stage, including why RTL simulation, synthesis, formal verification, STA, parasitic extraction, physical implementation, and DRC/LVS were performed separately.",
+      action:
+        "Worked through the ALU flow step by step: completed RTL/testbench simulation using VCS and DVE, ran Design Compiler synthesis with timing constraints, checked timing slack, used equivalence checking scripts for RTL-to-gate validation, performed QRC parasitic extraction, analyzed timing reports in Tempus, and practiced Innovus-based physical implementation and layout verification. Reviewed scripts and reports to understand data flow across stages, including RTL, netlist, SDC, SPEF, and timing reports.",
+      outcome:
+        "Built a clear end-to-end understanding of the digital ASIC implementation flow from RTL to post-layout verification, and learned how each EDA stage contributes to functional correctness, timing closure, and physical realizability.",
+      significance:
+        "Established a solid foundation for backend physical design, which directly enabled later independent projects such as the Traffic Light Controller, where I applied the flow to solve real backend issues including floorplan tuning, congestion reduction, and utilization optimization.",
     },
   },
+];
+
+const supportingProjects = [
   {
     title: "Folded-Cascode Fully Differential Op Amp",
     type: "Analog IC Design",
@@ -182,6 +185,48 @@ function Section({ id, eyebrow, title, children }) {
   );
 }
 
+function ProjectCard({ project }) {
+  return (
+    <article className="project" key={project.title}>
+      <div className="project-top">
+        <div>
+          <h3>{project.title}</h3>
+          <div className="type">{project.type}</div>
+          {project.weight && (
+            <div className="weight">
+              <span>{project.weight}</span>
+              <small>{project.weightLabel}</small>
+            </div>
+          )}
+        </div>
+        <div className="period">{project.period}</div>
+      </div>
+
+      <p>{project.description}</p>
+
+      {project.metrics && <div className="metrics">{project.metrics}</div>}
+
+      <div className="tags">
+        {project.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </div>
+
+      {project.swcaos && (
+        <details className="swcaos">
+          <summary>View SWCAOS Breakdown</summary>
+          {Object.entries(project.swcaos).map(([key, value]) => (
+            <div className="swcaos-item" key={key}>
+              <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
+              <p>{value}</p>
+            </div>
+          ))}
+        </details>
+      )}
+    </article>
+  );
+}
+
 export default function App() {
   return (
     <>
@@ -236,6 +281,39 @@ export default function App() {
         }
 
         .links a:hover { color: var(--ink); }
+
+        .dropdown {
+          position: relative;
+        }
+
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          min-width: 190px;
+          padding: 10px;
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.96);
+          border: 1px solid var(--line);
+          box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+        }
+
+        .dropdown:hover .dropdown-menu {
+          display: grid;
+          gap: 8px;
+        }
+
+        .dropdown-menu a {
+          padding: 8px 10px;
+          border-radius: 10px;
+          white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+          background: #eef2ff;
+          color: var(--accent);
+        }
 
         .container {
           max-width: 1120px;
@@ -610,7 +688,13 @@ export default function App() {
           </a>
           <div className="links">
             <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
+            <div className="dropdown">
+              <a href="#pd-projects">Projects</a>
+              <div className="dropdown-menu">
+                <a href="#pd-projects">PD Projects</a>
+                <a href="#supporting-projects">Supporting Projects</a>
+              </div>
+            </div>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
@@ -630,7 +714,7 @@ export default function App() {
               <a className="btn primary" href={`mailto:${profile.email}`}>
                 Contact Me
               </a>
-              <a className="btn secondary" href="#projects">
+              <a className="btn secondary" href="#pd-projects">
                 View Projects
               </a>
             </div>
@@ -664,46 +748,18 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="projects" eyebrow="Selected Work" title="Physical Design Projects">
+        <Section id="pd-projects" eyebrow="Selected Work" title="Physical Design Projects">
           <div className="project-grid">
-            {projects.map((project) => (
-              <article className="project" key={project.title}>
-                <div className="project-top">
-                  <div>
-                    <h3>{project.title}</h3>
-                    <div className="type">{project.type}</div>
-                    {project.weight && (
-                      <div className="weight">
-                        <span>{project.weight}</span>
-                        <small>{project.weightLabel}</small>
-                      </div>
-                    )}
-                  </div>
-                  <div className="period">{project.period}</div>
-                </div>
+            {pdProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </Section>
 
-                <p>{project.description}</p>
-
-                {project.metrics && <div className="metrics">{project.metrics}</div>}
-
-                <div className="tags">
-                  {project.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
-
-                {project.swcaos && (
-                  <details className="swcaos">
-                    <summary>View SWCAOS Breakdown</summary>
-                    {Object.entries(project.swcaos).map(([key, value]) => (
-                      <div className="swcaos-item" key={key}>
-                        <h4>{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
-                        <p>{value}</p>
-                      </div>
-                    ))}
-                  </details>
-                )}
-              </article>
+        <Section id="supporting-projects" eyebrow="Supporting Work" title="Supporting Projects">
+          <div className="project-grid">
+            {supportingProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
         </Section>
