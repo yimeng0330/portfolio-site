@@ -601,26 +601,22 @@ export default function App() {
           display: flex;
           flex-direction: column;
           gap: 22px;
+          min-height: 100%;
         }
 
-        .photo-placeholder {
-          width: 126px;
-          height: 126px;
-          border-radius: 28px;
-          border: 1px dashed #c7d0e3;
-          background: linear-gradient(135deg, #eef3ff, #ffffff);
-          color: var(--muted);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 800;
-          font-size: 13px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
+        .profile-photo {
+          width: 210px;
+          height: 210px;
+          border-radius: 32px;
+          object-fit: cover;
+          object-position: center 28%;
+          border: 1px solid var(--line);
+          box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
         }
 
         .education-block {
-          padding-top: 2px;
+          margin-top: auto;
+          padding-top: 12px;
         }
 
         .education-block h3 {
@@ -979,7 +975,11 @@ export default function App() {
           </div>
 
           <aside className="side-card">
-            <div className="photo-placeholder">Photo</div>
+          <img
+            className="profile-photo"
+            src="/images/profile.jpg"
+            alt="Yvonne Sun portrait"
+          />
 
             <div className="education-block">
               <h3>Education</h3>
