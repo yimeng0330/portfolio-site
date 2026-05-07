@@ -1,7 +1,7 @@
 import React from "react";
 
 const profile = {
-  name: "Yvonne Sun",
+  name: "Yimeng Sun",
   subtitle: "M.S. ECE @ UCLA 27‘",
   focus: "Physical Design · Digital IC Design · Device Modeling",
   location: "Los Angeles, CA",
@@ -602,6 +602,7 @@ export default function App() {
           flex-direction: column;
           gap: 22px;
           min-height: 100%;
+          align-items: stretch;
         }
 
         .profile-photo {
@@ -610,8 +611,8 @@ export default function App() {
           border-radius: 32px;
           object-fit: cover;
           object-position: center 28%;
-          border: 1px solid var(--line);
-          box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+          display: block;
+          margin: 0 auto;
         }
 
         .education-block {
@@ -965,7 +966,13 @@ export default function App() {
             <p className="focus">{profile.focus}</p>
             <p className="summary">{profile.summary}</p>
             <div className="cta-row">
-              <a className="mail-btn" href={`mailto:${profile.email}`} aria-label="Email Yvonne Sun">
+              <a
+                className="mail-btn"
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Email Yimeng Sun"
+              >
                 <MailIcon />
               </a>
               <a className="btn secondary" href="#pd-projects">
