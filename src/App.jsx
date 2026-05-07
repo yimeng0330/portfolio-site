@@ -461,35 +461,36 @@ export default function App() {
 
         .links a:hover { color: var(--ink); }
 
-        .dropdown { position: relative; }
-
+        .dropdown {
+          position: relative;
+          padding-bottom: 14px;
+          margin-bottom: -14px;
+        }
+        
         .dropdown-menu {
           display: none;
           position: absolute;
-          top: 24px;
-          left: 0;
-          min-width: 190px;
+          top: 30px;
+          left: -12px;
+          min-width: 200px;
           padding: 10px;
           border-radius: 16px;
-          background: rgba(255, 255, 255, 0.96);
+          background: rgba(255, 255, 255, 0.98);
           border: 1px solid var(--line);
           box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+          z-index: 99;
         }
-
+        
         .dropdown:hover .dropdown-menu {
           display: grid;
           gap: 8px;
         }
-
+        
         .dropdown-menu a {
-          padding: 8px 10px;
+          display: block;
+          padding: 10px 12px;
           border-radius: 10px;
           white-space: nowrap;
-        }
-
-        .dropdown-menu a:hover {
-          background: #eef2ff;
-          color: var(--accent);
         }
 
         .container {
